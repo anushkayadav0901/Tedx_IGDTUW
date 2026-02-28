@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -21,10 +21,10 @@ const isTouchDevice = () => 'ontouchstart' in window;
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const mobile = isMobile();
-  const touch = isTouchDevice();
+  const [mobile] = useState(isMobile());
+  const [touch] = useState(isTouchDevice());
   
-  const config = {
+  const config = useMemo(() => ({
     enableHeavyAnimations: !mobile,
     enableParallax: !mobile,
     enableCustomCursor: !mobile && !touch,
@@ -32,7 +32,7 @@ function App() {
     enableSplitText: !mobile,
     lerpValue: mobile ? 0.08 : 0.1,
     scrollMultiplier: mobile ? 1.5 : 1
-  };
+  }), [mobile, touch]);
 
   useEffect(() => {
     // Don't initialize Lenis until loader completes
