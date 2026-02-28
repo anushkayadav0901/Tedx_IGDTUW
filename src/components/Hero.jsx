@@ -21,7 +21,7 @@ const Hero = memo(({ config = {} }) => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 2 });
+      const tl = gsap.timeline({ delay: 1.5 }); // Reduced delay from 2 to 1.5
 
       // Split text animation (only if enabled)
       if (enableSplitText) {
@@ -58,13 +58,19 @@ const Hero = memo(({ config = {} }) => {
         }, '-=0.5');
       }
 
-      tl.from(ctaRef.current.children, {
-        opacity: 0,
-        y: 30,
-        stagger: 0.1,
-        duration: 0.6,
-        ease: 'power2.out'
-      }, '-=0.3');
+      // Animate buttons - TEST: No animation, just make visible
+      if (ctaRef.current) {
+        const buttons = ctaRef.current.querySelectorAll('button');
+        console.log('=== BUTTON DEBUG ===');
+        console.log('Found buttons:', buttons.length);
+        console.log('Button 1:', buttons[0]);
+        console.log('Button 2:', buttons[1]);
+        console.log('Container:', ctaRef.current);
+        console.log('Container children:', ctaRef.current.children);
+        
+        // Just set opacity to 1 immediately - no animation
+        gsap.set(buttons, { opacity: 1 });
+      }
 
       // Parallax effect on mouse move (desktop only)
       if (enableParallax) {
@@ -155,11 +161,17 @@ const Hero = memo(({ config = {} }) => {
           Beyond Barriers: Who Shapes the Future?
         </h2>
         
-        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <button className="magnetic-btn px-10 py-4 bg-ted-red text-white font-medium text-lg tracking-wide hover:scale-105 transition-transform duration-300 cursor-hover">
+        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full max-w-2xl mx-auto">
+          <button 
+            className="magnetic-btn w-full sm:w-auto px-10 py-4 bg-ted-red text-white font-medium text-lg tracking-wide hover:scale-105 transition-transform duration-300 cursor-hover opacity-0" 
+            aria-label="Apply to speak at TEDxIGDTUW"
+          >
             APPLY TO SPEAK
           </button>
-          <button className="magnetic-btn px-10 py-4 border-2 border-white text-white font-medium text-lg tracking-wide hover:bg-white hover:text-pure-black transition-all duration-300 cursor-hover">
+          <button 
+            className="magnetic-btn w-full sm:w-auto px-10 py-4 border-2 border-white text-white font-medium text-lg tracking-wide hover:bg-white hover:text-pure-black transition-all duration-300 cursor-hover opacity-0" 
+            aria-label="Get tickets for TEDxIGDTUW"
+          >
             GET TICKETS
           </button>
         </div>
