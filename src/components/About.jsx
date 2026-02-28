@@ -57,11 +57,11 @@ const About = memo(({ config }) => {
             <div ref={textRef}>
               <p className="text-lg text-white/80 mb-6 leading-relaxed">
                 TEDx is a program of local, self-organized events that bring people together 
-                to share a TED-like experience. Our event is called TEDxIGDTUW, where x = 
+                to share a TED-like experience. Our event is called TEDxIGDTU, where x = 
                 independently organized TED event.
               </p>
               <p className="text-lg text-white/80 leading-relaxed">
-                At TEDxIGDTUW, TED Talks video and live speakers combine to spark deep 
+                At TEDxIGDTU, TED Talks video and live speakers combine to spark deep 
                 discussion and connection. The TED Conference provides general guidance 
                 for the TEDx program, but individual TEDx events are self-organized.
               </p>

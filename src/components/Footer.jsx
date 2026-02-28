@@ -34,7 +34,7 @@ const Footer = memo(() => {
         <div className="flex flex-col md:flex-row justify-between items-center mb-12">
           <div className="mb-8 md:mb-0">
             <h3 className="text-3xl font-bold mb-2">
-              TEDx<span className="text-ted-red">IGDTUW</span>
+              TEDx<span className="text-ted-red">IGDTU</span>
             </h3>
             <p className="text-white/60">Beyond Barriers: Who Shapes the Future?</p>
           </div>
@@ -62,7 +62,7 @@ const Footer = memo(() => {
             talks (18 minutes or fewer) delivered by today's leading thinkers and doers.
           </p>
           <p className="text-white/40 text-sm">
-            © 2026 TEDxIGDTUW. Organized by students of Indira Gandhi Delhi Technical University for Women.
+            © 2026 TEDxIGDTU. Organized by students of Indira Gandhi Delhi Technical University for Women.
           </p>
         </div>
       </div>

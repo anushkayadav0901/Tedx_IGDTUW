@@ -1,6 +1,6 @@
-# TEDxIGDTUW Landing Page
+# TEDxIGDTU Landing Page
 
-A cinematic, Awwwards-level landing page for TEDxIGDTUW with advanced animations and interactions.
+A cinematic, Awwwards-level landing page for TEDxIGDTU with advanced animations and interactions.
 
 ## Design Philosophy
 

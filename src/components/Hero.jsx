@@ -147,7 +147,7 @@ const Hero = memo(({ config = {} }) => {
           ref={titleRef}
           className="text-7xl md:text-9xl font-bold tracking-tight mb-6"
         >
-          TEDx<span className="text-ted-red">IGDTUW</span>
+          TEDx<span className="text-ted-red">IGDTU</span>
         </h1>
         
         <div className="flex justify-center mb-8">
@@ -164,13 +164,13 @@ const Hero = memo(({ config = {} }) => {
         <div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full max-w-2xl mx-auto">
           <button 
             className="magnetic-btn w-full sm:w-auto px-10 py-4 bg-ted-red text-white font-medium text-lg tracking-wide hover:scale-105 transition-transform duration-300 cursor-hover opacity-0" 
-            aria-label="Apply to speak at TEDxIGDTUW"
+            aria-label="Apply to speak at TEDxIGDTU"
           >
             APPLY TO SPEAK
           </button>
           <button 
             className="magnetic-btn w-full sm:w-auto px-10 py-4 border-2 border-white text-white font-medium text-lg tracking-wide hover:bg-white hover:text-pure-black transition-all duration-300 cursor-hover opacity-0" 
-            aria-label="Get tickets for TEDxIGDTUW"
+            aria-label="Get tickets for TEDxIGDTU"
           >
             GET TICKETS
           </button>

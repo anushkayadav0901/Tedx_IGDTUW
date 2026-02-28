@@ -23,7 +23,7 @@ const timelineData = [
   {
     date: 'June 20, 2026',
     title: 'Event Day',
-    description: 'IGDTUW Campus, New Delhi'
+    description: 'IGDTU Campus, New Delhi'
   }
 ];
 
