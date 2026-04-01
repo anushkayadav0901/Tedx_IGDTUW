@@ -8,6 +8,27 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-padding-top: 5rem;
+  overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 6rem;
+  }
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+header a::after {
+  display: none;
+}
+
 html.lenis, html.lenis body {
   height: auto;
 }
@@ -26,6 +47,17 @@ html.lenis, html.lenis body {
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+@layer base {
+  :root {
+    --ted-accent: #ff0000;
+    --ted-accent-hover: #cc0000;
+    --ted-accent-glow: rgba(255, 0, 0, 0.24);
+    --card-radius: 14px;
+    --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+    --duration-card: 250ms;
+  }
 }
 
 body {
@@ -89,12 +121,124 @@ a::after {
   left: 0;
   width: 0;
   height: 1px;
-  background-color: #E50914;
+  background-color: var(--ted-accent);
   transition: width 0.3s ease;
 }
 
 a:hover::after {
   width: 100%;
+}
+
+/* Premium cards + CTAs — TEDx-style depth (hover-capable devices only) */
+@layer components {
+  .card-premium {
+    border-radius: var(--card-radius);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #000000;
+    transition:
+      transform var(--duration-card) var(--ease-premium),
+      box-shadow var(--duration-card) var(--ease-premium),
+      border-color var(--duration-card) ease-out;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .card-premium:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: rgba(255, 0, 0, 0.5);
+      box-shadow:
+        0 14px 36px rgba(0, 0, 0, 0.5),
+        0 0 28px var(--ted-accent-glow);
+    }
+  }
+
+  .speaker-card {
+    border-radius: var(--card-radius);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #000000;
+    overflow: hidden;
+    transition:
+      transform var(--duration-card) var(--ease-premium),
+      box-shadow var(--duration-card) var(--ease-premium),
+      border-color var(--duration-card) ease-out;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .speaker-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: rgba(255, 0, 0, 0.5);
+      box-shadow:
+        0 14px 36px rgba(0, 0, 0, 0.5),
+        0 0 28px var(--ted-accent-glow);
+    }
+  }
+
+  .speaker-card-media-inner {
+    transition: transform 320ms var(--ease-premium);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .speaker-card:hover .speaker-card-media-inner {
+      transform: scale(1.05);
+    }
+  }
+
+  .speaker-card-media-fade {
+    position: absolute;
+    inset: 0;
+    background: #000000;
+    opacity: 0;
+    transition: opacity var(--duration-card) ease-out;
+    pointer-events: none;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .speaker-card:hover .speaker-card-media-fade {
+      opacity: 0.22;
+    }
+  }
+
+  .btn-primary {
+    border-radius: 12px;
+    background-color: var(--ted-accent);
+    color: #ffffff;
+    font-weight: 500;
+    transition:
+      transform var(--duration-card) var(--ease-premium),
+      background-color var(--duration-card) ease-out,
+      box-shadow var(--duration-card) ease-out;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .btn-primary:hover {
+      transform: scale(1.03);
+      background-color: var(--ted-accent-hover);
+      box-shadow: 0 8px 24px rgba(255, 0, 0, 0.25);
+    }
+  }
+
+  .btn-secondary-outline {
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.92);
+    background-color: transparent;
+    color: #ffffff;
+    font-weight: 500;
+    transition:
+      transform var(--duration-card) var(--ease-premium),
+      background-color var(--duration-card) ease-out,
+      border-color var(--duration-card) ease-out,
+      color var(--duration-card) ease-out,
+      box-shadow var(--duration-card) ease-out;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .btn-secondary-outline:hover {
+      transform: scale(1.03);
+      background-color: var(--ted-accent);
+      border-color: var(--ted-accent);
+      color: #ffffff;
+      box-shadow: 0 8px 24px rgba(255, 0, 0, 0.22);
+    }
+  }
 }
 
 /* Reduced motion support */

@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'ted-red': '#E50914',
+        'ted-red': '#ff0000',
+        'ted-red-hover': '#cc0000',
         'pure-black': '#000000',
       },
       fontFamily: {

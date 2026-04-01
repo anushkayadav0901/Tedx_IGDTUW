@@ -61,14 +61,6 @@ const Hero = memo(({ config = {} }) => {
       // Animate buttons - TEST: No animation, just make visible
       if (ctaRef.current) {
         const buttons = ctaRef.current.querySelectorAll('button');
-        console.log('=== BUTTON DEBUG ===');
-        console.log('Found buttons:', buttons.length);
-        console.log('Button 1:', buttons[0]);
-        console.log('Button 2:', buttons[1]);
-        console.log('Container:', ctaRef.current);
-        console.log('Container children:', ctaRef.current.children);
-        
-        // Just set opacity to 1 immediately - no animation
         gsap.set(buttons, { opacity: 1 });
       }
 
@@ -120,7 +112,11 @@ const Hero = memo(({ config = {} }) => {
   }, [enableSplitText, enableParallax, enableHeavyAnimations]);
 
   return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden">
+    <section
+      id="hero"
+      ref={heroRef}
+      className="relative min-h-[100dvh] flex items-center justify-center px-4 sm:px-6 pt-24 pb-16 md:pt-20 md:pb-20 overflow-hidden"
+    >
       {/* Grain texture */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none grain-texture"></div>
       
@@ -142,34 +138,36 @@ const Hero = memo(({ config = {} }) => {
         </div>
       )}
 
-      <div className="text-center max-w-5xl relative z-10">
+      <div className="text-center max-w-5xl w-full relative z-10 mx-auto">
         <h1 
           ref={titleRef}
-          className="text-7xl md:text-9xl font-bold tracking-tight mb-6"
+          className="font-bold tracking-tight mb-4 sm:mb-6 text-[clamp(2.75rem,12vw+0.5rem,8rem)] leading-[1.05] break-words"
         >
           TEDx<span className="text-ted-red">IGDTU</span>
         </h1>
         
-        <div className="flex justify-center mb-8">
-          <div className="w-24 h-1 bg-ted-red"></div>
+        <div className="flex justify-center mb-6 sm:mb-8">
+          <div className="w-16 sm:w-24 h-1 bg-ted-red"></div>
         </div>
         
         <h2 
           ref={subtitleRef}
-          className="text-2xl md:text-4xl font-light mb-16 tracking-wide"
+          className="font-light mb-12 sm:mb-16 tracking-wide text-[clamp(1.125rem,3.5vw+0.5rem,2.25rem)] max-w-[min(100%,36rem)] mx-auto leading-snug px-1"
         >
           Beyond Barriers: Who Shapes the Future?
         </h2>
         
-        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full max-w-2xl mx-auto">
+        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-stretch sm:items-center w-full max-w-2xl mx-auto">
           <button 
-            className="magnetic-btn w-full sm:w-auto px-10 py-4 bg-ted-red text-white font-medium text-lg tracking-wide hover:scale-105 transition-transform duration-300 cursor-hover opacity-0" 
+            type="button"
+            className="magnetic-btn btn-primary rounded-none w-full sm:w-auto px-8 sm:px-10 py-3.5 sm:py-4 text-base sm:text-lg tracking-wide cursor-hover opacity-0" 
             aria-label="Apply to speak at TEDxIGDTU"
           >
             APPLY TO SPEAK
           </button>
           <button 
-            className="magnetic-btn w-full sm:w-auto px-10 py-4 border-2 border-white text-white font-medium text-lg tracking-wide hover:bg-white hover:text-pure-black transition-all duration-300 cursor-hover opacity-0" 
+            type="button"
+            className="magnetic-btn btn-secondary-outline rounded-none w-full sm:w-auto px-8 sm:px-10 py-3.5 sm:py-4 text-base sm:text-lg tracking-wide cursor-hover opacity-0" 
             aria-label="Get tickets for TEDxIGDTU"
           >
             GET TICKETS

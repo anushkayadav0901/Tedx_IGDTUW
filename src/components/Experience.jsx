@@ -81,23 +81,27 @@ const Experience = memo(({ config }) => {
   if (!config.enableHeavyAnimations) {
     // Grid layout for mobile
     return (
-      <section ref={sectionRef} className="py-32 px-6 border-t border-white/10">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl md:text-6xl font-bold mb-16 text-center">
+      <section
+        id="experience"
+        ref={sectionRef}
+        className="scroll-mt-24 md:scroll-mt-28 py-20 sm:py-28 md:py-32 px-4 sm:px-6 border-t border-white/10"
+      >
+        <div className="max-w-7xl mx-auto w-full min-w-0">
+          <h2 className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-10 sm:mb-14 md:mb-16 text-center px-2">
             The <span className="text-ted-red">Experience</span>
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {experiences.map((exp, index) => (
               <div 
                 key={index}
                 ref={el => cardsRef.current[index] = el}
-                className="border border-white/20 p-12 hover:border-ted-red transition-colors cursor-hover group"
+                className="card-premium group cursor-hover min-w-0 p-8 sm:p-10 md:p-12"
               >
-                <div className="text-6xl mb-8 grayscale group-hover:grayscale-0 transition-all duration-500">{exp.icon}</div>
-                <h3 className="text-3xl font-bold mb-6 group-hover:text-ted-red transition-colors">{exp.title}</h3>
-                <div className="w-16 h-0.5 bg-ted-red mb-6 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                <p className="text-white/70 leading-relaxed text-lg">{exp.description}</p>
+                <div className="text-5xl sm:text-6xl mb-6 sm:mb-8 grayscale group-hover:grayscale-0 transition-all duration-[250ms] ease-out">{exp.icon}</div>
+                <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 group-hover:text-ted-red transition-colors duration-[250ms] ease-out">{exp.title}</h3>
+                <div className="w-16 h-0.5 bg-ted-red mb-6 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[250ms] ease-out"></div>
+                <p className="text-white/70 leading-relaxed text-base sm:text-lg">{exp.description}</p>
               </div>
             ))}
           </div>
@@ -108,11 +112,15 @@ const Experience = memo(({ config }) => {
 
   // Horizontal scroll for desktop
   return (
-    <section ref={sectionRef} className="relative h-screen border-t border-white/10 overflow-hidden">
-      <div className="sticky top-0 h-screen flex items-center">
-        <div ref={containerRef} className="flex gap-8 px-6">
-          <div className="min-w-[50vw] flex items-center justify-center">
-            <h2 className="text-5xl md:text-7xl font-bold">
+    <section
+      id="experience"
+      ref={sectionRef}
+      className="relative h-screen min-h-[100dvh] border-t border-white/10 overflow-hidden scroll-mt-24 md:scroll-mt-28"
+    >
+      <div className="sticky top-0 h-screen min-h-[100dvh] flex items-center">
+        <div ref={containerRef} className="flex gap-6 lg:gap-8 px-4 sm:px-6 w-max max-w-none">
+          <div className="min-w-[min(50vw,28rem)] sm:min-w-[50vw] flex items-center justify-center shrink-0">
+            <h2 className="text-[clamp(2rem,5vw+1rem,4.5rem)] font-bold text-center px-2">
               The <span className="text-ted-red">Experience</span>
             </h2>
           </div>
@@ -121,16 +129,16 @@ const Experience = memo(({ config }) => {
             <div 
               key={index}
               ref={el => cardsRef.current[index] = el}
-              className="min-w-[400px] border border-white/20 p-12 hover:border-ted-red transition-colors cursor-hover group"
+              className="card-premium group cursor-hover shrink-0 min-w-[min(20rem,calc(100vw-3rem))] sm:min-w-[min(22rem,calc(100vw-4rem))] lg:min-w-[400px] p-8 sm:p-10 md:p-12"
             >
-              <div className="text-6xl mb-8 grayscale group-hover:grayscale-0 transition-all duration-500">{exp.icon}</div>
-              <h3 className="text-3xl font-bold mb-6 group-hover:text-ted-red transition-colors">{exp.title}</h3>
-              <div className="w-16 h-0.5 bg-ted-red mb-6 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-              <p className="text-white/70 leading-relaxed text-lg">{exp.description}</p>
+              <div className="text-6xl mb-8 grayscale group-hover:grayscale-0 transition-all duration-[250ms] ease-out">{exp.icon}</div>
+              <h3 className="text-3xl font-bold mb-6 group-hover:text-ted-red transition-colors duration-[250ms] ease-out">{exp.title}</h3>
+              <div className="w-16 h-0.5 bg-ted-red mb-6 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-[250ms] ease-out"></div>
+              <p className="text-white/70 leading-relaxed text-base sm:text-lg">{exp.description}</p>
             </div>
           ))}
           
-          <div className="min-w-[50vw]"></div>
+          <div className="min-w-[min(40vw,20rem)] sm:min-w-[50vw] shrink-0" aria-hidden />
         </div>
       </div>
     </section>

@@ -3,6 +3,7 @@ import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import RedVelvetCurtainLoader from './components/Loader';
+import Navbar from './components/Navbar';
 import CustomCursor from './components/CustomCursor';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -15,14 +16,23 @@ import Footer from './components/Footer';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Simple device detection
-const isMobile = () => window.innerWidth < 768;
-const isTouchDevice = () => 'ontouchstart' in window;
+const isMobileWidth = () =>
+  typeof window !== 'undefined' && window.innerWidth < 768;
+const isTouchDevice = () =>
+  typeof window !== 'undefined' && 'ontouchstart' in window;
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [mobile] = useState(isMobile());
+  const [mobile, setMobile] = useState(() => isMobileWidth());
   const [touch] = useState(isTouchDevice());
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    const sync = () => setMobile(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
   
   const config = useMemo(() => ({
     enableHeavyAnimations: !mobile,
@@ -114,6 +124,7 @@ function App() {
     <>
       {loading && <RedVelvetCurtainLoader onComplete={() => setLoading(false)} />}
       {config.enableCustomCursor && <CustomCursor />}
+      {!loading && <Navbar />}
       <div className={`bg-pure-black min-h-screen ${config.enableCustomCursor ? 'cursor-none' : ''}`}>
         <Hero config={config} />
         <About config={config} />

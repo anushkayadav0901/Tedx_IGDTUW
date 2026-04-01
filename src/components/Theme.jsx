@@ -99,7 +99,11 @@ const Theme = memo(({ config }) => {
   }, [config]);
 
   return (
-    <section ref={sectionRef} className="relative py-32 px-6 border-t border-white/10 overflow-hidden">
+    <section
+      id="theme"
+      ref={sectionRef}
+      className="relative scroll-mt-24 md:scroll-mt-28 py-20 sm:py-28 md:py-32 px-4 sm:px-6 border-t border-white/10 overflow-hidden"
+    >
       {/* Barrier-like blocks (desktop only) */}
       {config.enableHeavyAnimations && (
         <div className="absolute inset-0 pointer-events-none">
@@ -110,28 +114,27 @@ const Theme = memo(({ config }) => {
         </div>
       )}
 
-      <div className="max-w-4xl mx-auto text-center relative z-10">
+      <div className="max-w-4xl mx-auto w-full min-w-0 text-center relative z-10 px-1">
         <div className="mb-6">
-          <h2 className="text-6xl md:text-8xl font-bold tracking-tight inline-block">
+          <h2 className="font-bold tracking-tight flex flex-wrap justify-center gap-x-2 sm:gap-x-3 gap-y-1 text-[clamp(2.5rem,8vw+0.5rem,6rem)] leading-tight">
             <span ref={beyondRef}>BEYOND </span>
             <span ref={barriersRef} className="text-ted-red">BARRIERS</span>
           </h2>
         </div>
         
-        <div ref={line1Ref} className="w-32 h-0.5 bg-ted-red mx-auto mb-6"></div>
+        <div ref={line1Ref} className="w-24 sm:w-32 h-0.5 bg-ted-red mx-auto mb-6"></div>
         
-        <p ref={subtitleRef} className="text-2xl md:text-3xl font-light mb-12 text-white/90">
+        <p ref={subtitleRef} className="text-[clamp(1.25rem,3vw+0.5rem,1.875rem)] font-light mb-10 sm:mb-12 text-white/90 px-2">
           Who Shapes the Future?
         </p>
         
-        <div ref={line2Ref} className="w-24 h-0.5 bg-ted-red mx-auto mb-12"></div>
+        <div ref={line2Ref} className="w-20 sm:w-24 h-0.5 bg-ted-red mx-auto mb-10 sm:mb-12"></div>
         
-        <div className="h-64 border border-white/20 mb-12 flex items-center justify-center relative overflow-hidden cursor-hover group">
+        <div className="card-premium cursor-hover min-h-[12rem] sm:min-h-[16rem] md:h-64 w-full max-w-full mb-10 sm:mb-12 flex items-center justify-center relative overflow-hidden mx-auto">
           <p className="text-white/40 text-sm">3D Interactive Element Space</p>
-          <div className="absolute inset-0 border-2 border-ted-red/0 group-hover:border-ted-red/30 transition-colors duration-500"></div>
         </div>
         
-        <p ref={descRef} className="text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
+        <p ref={descRef} className="text-base sm:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
           In a world defined by boundaries—social, technological, and personal—who dares 
           to break through? This year's theme explores the pioneers, innovators, and 
           changemakers who refuse to accept limitations and instead redefine what's possible.

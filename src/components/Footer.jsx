@@ -29,17 +29,17 @@ const Footer = memo(() => {
   }, []);
 
   return (
-    <footer ref={sectionRef} className="border-t border-white/10 py-16 px-6">
-      <div ref={footerRef} className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-12">
-          <div className="mb-8 md:mb-0">
-            <h3 className="text-3xl font-bold mb-2">
+    <footer ref={sectionRef} className="border-t border-white/10 py-12 sm:py-16 px-4 sm:px-6">
+      <div ref={footerRef} className="max-w-7xl mx-auto w-full min-w-0">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-6 mb-10 sm:mb-12 text-center md:text-left">
+          <div className="md:mb-0 w-full md:w-auto">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-2">
               TEDx<span className="text-ted-red">IGDTU</span>
             </h3>
             <p className="text-white/60">Beyond Barriers: Who Shapes the Future?</p>
           </div>
           
-          <div className="flex gap-6">
+          <div className="flex flex-wrap justify-center md:justify-end gap-5 sm:gap-6">
             <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-ted-red transition-colors text-2xl cursor-hover">
               <span>𝕏</span>
             </a>

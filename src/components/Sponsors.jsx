@@ -52,20 +52,24 @@ const Sponsors = memo(() => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-32 px-6 border-t border-white/10">
-      <div className="max-w-7xl mx-auto">
-        <h2 ref={titleRef} className="text-5xl md:text-6xl font-bold mb-16 text-center">
+    <section
+      id="partners"
+      ref={sectionRef}
+      className="scroll-mt-24 md:scroll-mt-28 py-20 sm:py-28 md:py-32 px-4 sm:px-6 border-t border-white/10"
+    >
+      <div className="max-w-7xl mx-auto w-full min-w-0">
+        <h2 ref={titleRef} className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-10 sm:mb-14 md:mb-16 text-center px-2">
           Our <span className="text-ted-red">Partners</span>
         </h2>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {sponsors.map((sponsor, index) => (
             <div 
               key={index}
               ref={el => cardsRef.current[index] = el}
-              className="border border-white/20 h-32 flex items-center justify-center grayscale hover:grayscale-0 hover:border-ted-red transition-all cursor-hover group"
+              className="card-premium group cursor-hover min-h-[7rem] sm:h-32 py-6 px-3 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-[250ms] ease-out"
             >
-              <p className="text-white/40 text-sm group-hover:text-white/80 transition-colors">{sponsor.name}</p>
+              <p className="text-white/40 text-sm group-hover:text-white/90 transition-colors duration-[250ms] ease-out">{sponsor.name}</p>
             </div>
           ))}
         </div>

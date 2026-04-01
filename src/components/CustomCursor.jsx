@@ -27,7 +27,7 @@ const CustomCursor = memo(() => {
       isHoveringRef.current = true;
       gsap.to(cursorRingRef.current, {
         scale: 1.5,
-        borderColor: '#E50914',
+        borderColor: '#ff0000',
         duration: 0.3
       });
     };
