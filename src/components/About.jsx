@@ -12,9 +12,8 @@ const About = memo(({ config }) => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Batch animations for better performance
       const elements = [titleRef.current, ...textRef.current.children];
-      
+
       ScrollTrigger.batch(elements, {
         start: 'top 80%',
         onEnter: (batch) => {
@@ -29,7 +28,6 @@ const About = memo(({ config }) => {
         once: true
       });
 
-      // Placeholder parallax (only on desktop)
       if (config.enableParallax) {
         gsap.to(placeholderRef.current, {
           scrollTrigger: {
@@ -60,19 +58,24 @@ const About = memo(({ config }) => {
             </h2>
             <div ref={textRef}>
               <p className="text-base sm:text-lg text-white/80 mb-6 leading-relaxed">
-                TEDx is a program of local, self-organized events that bring people together 
-                to share a TED-like experience. Our event is called TEDxIGDTU, where x = 
-                independently organized TED event.
+                TEDx carries forward TED's mission of{' '}
+                <span className="text-white font-medium">ideas worth spreading</span>
+                — short, powerful talks that spark curiosity and conversation.
+              </p>
+              <p className="text-base sm:text-lg text-white/80 mb-6 leading-relaxed">
+                TEDxIGDTU is a <span className="text-white font-medium">community-driven</span>{' '}
+                gathering on campus: independent, locally organised, and designed to connect our
+                audience with voices that matter.
               </p>
               <p className="text-base sm:text-lg text-white/80 leading-relaxed">
-                At TEDxIGDTU, TED Talks video and live speakers combine to spark deep 
-                discussion and connection. The TED Conference provides general guidance 
-                for the TEDx program, but individual TEDx events are self-organized.
+                Together we bridge the <span className="text-white font-medium">global TED ethos</span>{' '}
+                with <span className="text-white font-medium">local stories</span>—ideas that travel
+                the world, rooted in our own backyard.
               </p>
             </div>
           </div>
-          
-          <div 
+
+          <div
             ref={placeholderRef}
             className="card-premium group cursor-hover w-full max-w-full min-h-[14rem] sm:min-h-[18rem] md:h-96 md:min-h-0 aspect-[4/3] md:aspect-auto flex items-center justify-center relative overflow-hidden"
           >

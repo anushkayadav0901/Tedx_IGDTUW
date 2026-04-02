@@ -8,11 +8,13 @@ import CustomCursor from './components/CustomCursor';
 import Hero from './components/Hero';
 import About from './components/About';
 import Theme from './components/Theme';
+import EventOverview from './components/EventOverview';
 import Speakers from './components/Speakers';
 import Experience from './components/Experience';
 import Timeline from './components/Timeline';
 import Sponsors from './components/Sponsors';
 import Footer from './components/Footer';
+import FloatingWelcomeOrb from './components/FloatingWelcomeOrb';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -68,14 +70,8 @@ function App() {
 
     requestAnimationFrame(raf);
 
-    // Connect Lenis with GSAP ScrollTrigger
+    // Connect Lenis with GSAP ScrollTrigger (single rAF loop only — avoid double velocity / layout thrash)
     lenis.on('scroll', ScrollTrigger.update);
-
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
-
-    gsap.ticker.lagSmoothing(0);
 
     // Magnetic button effect (only on desktop)
     if (config.enableMagneticButtons) {
@@ -116,7 +112,6 @@ function App() {
 
     return () => {
       lenis.destroy();
-      gsap.ticker.remove();
     };
   }, [config, loading]);
 
@@ -125,16 +120,20 @@ function App() {
       {loading && <RedVelvetCurtainLoader onComplete={() => setLoading(false)} />}
       {config.enableCustomCursor && <CustomCursor />}
       {!loading && <Navbar />}
-      <div className={`bg-pure-black min-h-screen ${config.enableCustomCursor ? 'cursor-none' : ''}`}>
+      <div
+        className={`bg-pure-black min-h-screen w-full max-w-full overflow-x-hidden ${config.enableCustomCursor ? 'cursor-none' : ''}`}
+      >
         <Hero config={config} />
         <About config={config} />
         <Theme config={config} />
+        <EventOverview />
         <Speakers config={config} />
         <Experience config={config} />
         <Timeline config={config} />
         <Sponsors config={config} />
         <Footer />
       </div>
+      {!loading && <FloatingWelcomeOrb />}
     </>
   );
 }

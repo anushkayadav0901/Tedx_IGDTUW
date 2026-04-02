@@ -119,7 +119,7 @@ const Experience = memo(({ config }) => {
     >
       <div className="sticky top-0 h-screen min-h-[100dvh] flex items-center">
         <div ref={containerRef} className="flex gap-6 lg:gap-8 px-4 sm:px-6 w-max max-w-none">
-          <div className="min-w-[min(50vw,28rem)] sm:min-w-[50vw] flex items-center justify-center shrink-0">
+          <div className="min-w-[16rem] sm:min-w-[22rem] md:min-w-[26rem] max-w-[28rem] flex items-center justify-center shrink-0">
             <h2 className="text-[clamp(2rem,5vw+1rem,4.5rem)] font-bold text-center px-2">
               The <span className="text-ted-red">Experience</span>
             </h2>
@@ -129,7 +129,7 @@ const Experience = memo(({ config }) => {
             <div 
               key={index}
               ref={el => cardsRef.current[index] = el}
-              className="card-premium group cursor-hover shrink-0 min-w-[min(20rem,calc(100vw-3rem))] sm:min-w-[min(22rem,calc(100vw-4rem))] lg:min-w-[400px] p-8 sm:p-10 md:p-12"
+              className="card-premium glass-panel-light group cursor-hover shrink-0 min-w-[280px] sm:min-w-[320px] lg:min-w-[400px] p-8 sm:p-10 md:p-12"
             >
               <div className="text-6xl mb-8 grayscale group-hover:grayscale-0 transition-all duration-[250ms] ease-out">{exp.icon}</div>
               <h3 className="text-3xl font-bold mb-6 group-hover:text-ted-red transition-colors duration-[250ms] ease-out">{exp.title}</h3>
@@ -138,7 +138,7 @@ const Experience = memo(({ config }) => {
             </div>
           ))}
           
-          <div className="min-w-[min(40vw,20rem)] sm:min-w-[50vw] shrink-0" aria-hidden />
+          <div className="min-w-[8rem] sm:min-w-[12rem] md:min-w-[16rem] shrink-0" aria-hidden />
         </div>
       </div>
     </section>
