@@ -312,12 +312,14 @@ const Hero = memo(({ config = {} }) => {
               <div className="w-16 sm:w-24 h-1 bg-ted-red" />
             </div>
 
-            <h2
-              ref={subtitleRef}
-              className="font-light mb-6 sm:mb-12 tracking-wide text-[clamp(1rem,3vw+0.5rem,2.25rem)] max-w-[min(100%,36rem)] mx-auto leading-snug sm:leading-snug px-1 hero-text-glow hero-subtitle-mobile"
-            >
-              Beyond Barriers: Who Shapes the Future?
-            </h2>
+            <div className="max-w-5xl mx-auto w-full px-2">
+              <h2
+                ref={subtitleRef}
+                className="font-light mb-6 sm:mb-12 tracking-wide text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-[2.25rem] leading-tight text-center whitespace-nowrap overflow-hidden text-ellipsis hero-text-glow hero-subtitle-mobile"
+              >
+                Beyond Barriers: Who Shapes the Future?
+              </h2>
+            </div>
 
             <div className="flex justify-center mb-10 sm:mb-12">
               <a 
