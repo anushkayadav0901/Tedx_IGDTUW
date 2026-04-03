@@ -48,26 +48,26 @@ const About = memo(({ config }) => {
     <section
       id="about"
       ref={sectionRef}
-      className="scroll-mt-24 md:scroll-mt-28 py-20 sm:py-28 md:py-32 px-4 sm:px-6 border-t border-white/10"
+      className="scroll-mt-24 md:scroll-mt-28 py-12 sm:py-24 md:py-32 px-4 sm:px-6 border-t border-white/10"
     >
       <div className="max-w-7xl mx-auto w-full min-w-0">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-16 items-center">
           <div className="min-w-0">
-            <h2 ref={titleRef} className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-6 md:mb-8 leading-tight">
+            <h2 ref={titleRef} className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-4 md:mb-8 leading-tight">
               What is <span className="text-ted-red">TEDx</span>?
             </h2>
             <div ref={textRef}>
-              <p className="text-base sm:text-lg text-white/80 mb-6 leading-relaxed">
+              <p className="text-base sm:text-lg text-white/80 mb-4 sm:mb-6 leading-snug sm:leading-relaxed">
                 TEDx carries forward TED's mission of{' '}
                 <span className="text-white font-medium">ideas worth spreading</span>
                 - short, powerful talks that spark curiosity and conversation.
               </p>
-              <p className="text-base sm:text-lg text-white/80 mb-6 leading-relaxed">
+              <p className="text-base sm:text-lg text-white/80 mb-4 sm:mb-6 leading-snug sm:leading-relaxed">
                 TEDxIGDTU is a <span className="text-white font-medium">community-driven</span>{' '}
                 gathering on campus: independent, locally organised, and designed to connect our
                 audience with voices that matter.
               </p>
-              <p className="text-base sm:text-lg text-white/80 leading-relaxed">
+              <p className="text-base sm:text-lg text-white/80 leading-snug sm:leading-relaxed">
                 Together we bridge the <span className="text-white font-medium">global TED ethos</span>{' '}
                 with <span className="text-white font-medium">local stories</span> - ideas that travel
                 the world, rooted in our own backyard.

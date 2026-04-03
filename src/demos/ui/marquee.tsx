@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 type MarqueeProps = {
   children: React.ReactNode;
   pauseOnHover?: boolean;
+  paused?: boolean;
   className?: string;
   /**
    * Animation duration in seconds.
@@ -18,6 +19,7 @@ type MarqueeProps = {
 export function Marquee({
   children,
   pauseOnHover = false,
+  paused = false,
   className,
   durationSeconds,
 }: MarqueeProps) {
@@ -29,6 +31,7 @@ export function Marquee({
       className={[
         'tedx-marquee',
         pauseOnHover ? 'tedx-marquee--pauseOnHover' : '',
+        paused ? 'tedx-marquee--paused' : '',
         className ?? '',
       ].join(' ')}
       style={

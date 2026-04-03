@@ -7,6 +7,7 @@ import React, { useMemo } from 'react';
 export function Marquee({
   children,
   pauseOnHover = false,
+  paused = false,
   className,
   durationSeconds,
 }) {
@@ -18,6 +19,7 @@ export function Marquee({
       className={[
         'tedx-marquee',
         pauseOnHover ? 'tedx-marquee--pauseOnHover' : '',
+        paused ? 'tedx-marquee--paused' : '',
         className || '',
       ].join(' ')}
       style={

@@ -97,8 +97,8 @@ function App() {
             gsap.to(btn, {
               x: 0,
               y: 0,
-              duration: 0.5,
-              ease: 'elastic.out(1, 0.3)'
+              duration: 0.35,
+              ease: 'power2.out'
             });
           };
 

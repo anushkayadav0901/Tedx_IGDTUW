@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, memo } from 'react';
+import React, { useEffect, useRef, memo, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -32,6 +32,15 @@ const Speakers = memo(({ config }) => {
   const tiltRefs = useRef([]);
   const titleRef = useRef(null);
   const sectionRef = useRef(null);
+  const [selected, setSelected] = useState(() => new Set());
+  const toggleCard = useCallback((index) => {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -99,24 +108,36 @@ const Speakers = memo(({ config }) => {
     <section
       id="speakers"
       ref={sectionRef}
-      className="scroll-mt-24 md:scroll-mt-28 py-20 sm:py-28 md:py-32 px-4 sm:px-6 border-t border-white/10"
+      className="scroll-mt-24 md:scroll-mt-28 py-12 sm:py-24 md:py-32 px-4 sm:px-6 border-t border-white/10"
     >
       <div className="max-w-7xl mx-auto w-full min-w-0">
         <h2 ref={titleRef} className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-4 sm:mb-6 text-center px-2">
           Distinguished <span className="text-ted-red">Speakers</span>
         </h2>
-        <p className="text-center text-white/60 text-sm sm:text-base max-w-2xl mx-auto mb-10 sm:mb-14 md:mb-16 px-2">
+        <p className="text-center text-white/60 text-sm sm:text-base max-w-2xl mx-auto mb-6 sm:mb-12 md:mb-16 px-2 leading-snug sm:leading-normal">
           Voices spanning leadership, policy, alumni excellence, digital culture, and deep expertise - unified by ideas worth spreading.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
           {distinguishedSpeakers.map((speaker, index) => (
             <article
               key={speaker.role}
               ref={(el) => {
                 cardsRef.current[index] = el;
               }}
-              className="speaker-card group cursor-hover flex flex-col min-w-0"
+              className={`speaker-card group cursor-pointer flex flex-col min-w-0 transition-[border-color,box-shadow] duration-200 ease-out focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ted-red ${
+                selected.has(index) ? 'interactive-active' : ''
+              }`}
+              onClick={() => toggleCard(index)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  toggleCard(index);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              aria-pressed={selected.has(index)}
             >
               <div
                 ref={(el) => {
@@ -139,7 +160,7 @@ const Speakers = memo(({ config }) => {
                   {speaker.role}
                 </h3>
                 <div className="w-12 h-0.5 bg-ted-red mb-3 transform origin-left scale-x-100 group-hover:scale-x-[1.15] transition-transform duration-[250ms] ease-out" />
-                <p className="text-white/70 text-sm sm:text-base leading-relaxed">{speaker.focus}</p>
+                <p className="text-white/70 text-sm sm:text-base leading-snug sm:leading-relaxed">{speaker.focus}</p>
               </div>
             </article>
           ))}

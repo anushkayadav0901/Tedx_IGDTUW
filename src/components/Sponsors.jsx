@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, memo } from 'react';
+import React, { useEffect, useRef, memo, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -17,6 +17,15 @@ const Sponsors = memo(() => {
   const titleRef = useRef(null);
   const cardsRef = useRef([]);
   const sectionRef = useRef(null);
+  const [selected, setSelected] = useState(() => new Set());
+  const togglePartner = useCallback((index) => {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -55,19 +64,33 @@ const Sponsors = memo(() => {
     <section
       id="partners"
       ref={sectionRef}
-      className="scroll-mt-24 md:scroll-mt-28 py-20 sm:py-28 md:py-32 px-4 sm:px-6 border-t border-white/10"
+      className="scroll-mt-24 md:scroll-mt-28 py-12 sm:py-24 md:py-32 px-4 sm:px-6 border-t border-white/10"
     >
       <div className="max-w-7xl mx-auto w-full min-w-0">
-        <h2 ref={titleRef} className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-10 sm:mb-14 md:mb-16 text-center px-2">
+        <h2 ref={titleRef} className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-6 sm:mb-12 md:mb-16 text-center px-2">
           Our <span className="text-ted-red">Partners</span>
         </h2>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8">
           {sponsors.map((sponsor, index) => (
             <div 
               key={index}
               ref={el => cardsRef.current[index] = el}
-              className="card-premium group cursor-hover min-h-[7rem] sm:h-32 py-6 px-3 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-[250ms] ease-out"
+              role="button"
+              tabIndex={0}
+              aria-pressed={selected.has(index)}
+              onClick={() => togglePartner(index)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  togglePartner(index);
+                }
+              }}
+              className={`card-premium partner-tile group cursor-pointer min-h-[6rem] sm:min-h-[7rem] sm:h-32 py-5 sm:py-6 px-3 flex items-center justify-center transition-all duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ted-red ${
+                selected.has(index)
+                  ? 'interactive-active grayscale-0'
+                  : 'grayscale hover:grayscale-0'
+              }`}
             >
               <p className="text-white/40 text-sm group-hover:text-white/90 transition-colors duration-[250ms] ease-out">{sponsor.name}</p>
             </div>

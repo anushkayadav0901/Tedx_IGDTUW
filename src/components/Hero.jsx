@@ -298,22 +298,22 @@ const Hero = memo(({ config = {} }) => {
           )}
         </div>
 
-        <div className="hero-content-layer z-10 flex items-center justify-center pointer-events-none px-3 sm:px-6 py-6 sm:py-12 md:py-16 md:absolute md:inset-0 min-h-0">
+        <div className="hero-content-layer z-10 flex items-center justify-center pointer-events-none px-3 sm:px-6 py-4 sm:py-12 md:py-16 md:absolute md:inset-0 min-h-0 max-md:py-3">
           <div className="text-center max-w-5xl w-full min-w-0 pointer-events-auto mx-auto">
             <h1
               ref={titleRef}
-              className="hero-title-text font-bold tracking-tight mb-2 sm:mb-6 text-[clamp(2.75rem,12vw+0.5rem,8rem)] md:leading-[1.05] leading-tight break-words text-balance px-1 sm:px-0 hero-text-glow"
+              className="hero-title-text font-bold tracking-tight mb-1.5 sm:mb-6 text-[clamp(2.75rem,12vw+0.5rem,8rem)] md:leading-[1.05] leading-tight break-words text-balance px-1 sm:px-0 hero-text-glow"
             >
               TEDx<span className="text-ted-red">IGDTU</span>
             </h1>
 
-            <div className="flex justify-center mb-3 sm:mb-8 hero-title-rule">
+            <div className="flex justify-center mb-2 sm:mb-8 hero-title-rule">
               <div className="w-16 sm:w-24 h-1 bg-ted-red" />
             </div>
 
             <h2
               ref={subtitleRef}
-              className="font-light mb-4 sm:mb-16 tracking-wide text-[clamp(1.05rem,3.2vw+0.45rem,2.25rem)] max-w-[min(100%,36rem)] mx-auto leading-snug sm:leading-snug px-1 hero-text-glow hero-subtitle-mobile"
+              className="font-light mb-3 sm:mb-16 tracking-wide text-[clamp(1.05rem,3.2vw+0.45rem,2.25rem)] max-w-[min(100%,36rem)] mx-auto leading-snug sm:leading-snug px-1 hero-text-glow hero-subtitle-mobile"
             >
               Beyond Barriers: Who Shapes the Future?
             </h2>
@@ -327,14 +327,14 @@ const Hero = memo(({ config = {} }) => {
                 className="magnetic-btn btn-primary rounded-none w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-lg tracking-wide cursor-hover opacity-0"
                 aria-label="Apply to speak at TEDxIGDTU"
               >
-                APPLY TO SPEAK
+                <span className="magnetic-btn__label">APPLY TO SPEAK</span>
               </button>
               <button
                 type="button"
                 className="magnetic-btn btn-secondary-outline rounded-none w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-lg tracking-wide cursor-hover opacity-0"
                 aria-label="Get tickets for TEDxIGDTU"
               >
-                GET TICKETS
+                <span className="magnetic-btn__label">GET TICKETS</span>
               </button>
             </div>
           </div>

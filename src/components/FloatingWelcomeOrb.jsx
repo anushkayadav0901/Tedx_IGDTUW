@@ -56,7 +56,7 @@ const FloatingWelcomeOrb = memo(() => {
         onClick={toggle}
         aria-expanded={open}
         aria-label={open ? 'Close message' : 'Open welcome message'}
-        className="floating-welcome-trigger pointer-events-auto flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-full bg-[#E50914] text-white shadow-[0_6px_20px_rgba(229,9,20,0.4)] border border-white/20 opacity-[0.88] transition-transform duration-300 ease-out hover:scale-105 hover:opacity-100 hover:shadow-[0_8px_26px_rgba(229,9,20,0.5)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ff0000] active:scale-[0.97] max-md:h-9 max-md:w-9"
+        className="btn-icon-press floating-welcome-trigger pointer-events-auto flex h-11 w-11 md:h-12 md:w-12 items-center justify-center rounded-full bg-[#E50914] text-white shadow-[0_6px_20px_rgba(229,9,20,0.4)] border border-white/20 opacity-[0.88] transition-[transform,box-shadow,opacity] duration-200 ease-out hover:scale-105 hover:opacity-100 hover:shadow-[0_8px_26px_rgba(229,9,20,0.5)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ff0000] max-md:h-9 max-md:w-9"
       >
         <span className="sr-only">{open ? 'Close' : 'Open welcome message'}</span>
         <span

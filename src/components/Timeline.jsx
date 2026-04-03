@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, memo } from 'react';
+import React, { useEffect, useRef, memo, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -32,6 +32,15 @@ const Timeline = memo(() => {
   const itemsRef = useRef([]);
   const lineRef = useRef(null);
   const sectionRef = useRef(null);
+  const [selected, setSelected] = useState(() => new Set());
+  const toggleItem = useCallback((index) => {
+    setSelected((prev) => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -82,7 +91,7 @@ const Timeline = memo(() => {
     <section
       id="timeline"
       ref={sectionRef}
-      className="scroll-mt-24 md:scroll-mt-28 py-20 sm:py-28 md:py-32 px-4 sm:px-6 border-t border-white/10"
+      className="scroll-mt-24 md:scroll-mt-28 py-12 sm:py-24 md:py-32 px-4 sm:px-6 border-t border-white/10"
     >
       <div className="max-w-4xl mx-auto w-full min-w-0">
         <h2 ref={titleRef} className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-10 sm:mb-14 md:mb-16 text-center px-2">
@@ -99,7 +108,7 @@ const Timeline = memo(() => {
             <div 
               key={index}
               ref={el => itemsRef.current[index] = el}
-              className={`relative mb-12 sm:mb-16 last:mb-0 ${
+              className={`relative mb-8 sm:mb-16 last:mb-0 ${
                 index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:ml-auto md:text-left'
               } md:w-1/2 cursor-hover group`}
             >
@@ -110,7 +119,21 @@ const Timeline = memo(() => {
               />
               
               <div className="pl-8 md:pl-0 min-w-0">
-                <div className="card-premium group cursor-hover p-5 sm:p-6 text-left md:text-inherit">
+                <div
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={selected.has(index)}
+                  onClick={() => toggleItem(index)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      toggleItem(index);
+                    }
+                  }}
+                  className={`card-premium group cursor-pointer p-5 sm:p-6 text-left md:text-inherit transition-[border-color,box-shadow] duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ted-red ${
+                    selected.has(index) ? 'interactive-active' : ''
+                  }`}
+                >
                   <p className="text-ted-red font-medium mb-2">{item.date}</p>
                   <h3 className="text-xl sm:text-2xl font-bold mb-2 group-hover:text-ted-red transition-colors duration-[250ms] ease-out break-words">{item.title}</h3>
                   <p className="text-white/70">{item.description}</p>

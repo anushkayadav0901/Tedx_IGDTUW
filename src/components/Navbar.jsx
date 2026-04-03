@@ -81,7 +81,7 @@ const Navbar = memo(() => {
 
         <button
           type="button"
-          className="lg:hidden relative z-[110] w-11 h-11 flex items-center justify-center rounded-xl border border-white/20 text-white hover:border-ted-red hover:text-ted-red transition-colors duration-[250ms] ease-out cursor-hover"
+          className="btn-icon-press lg:hidden relative z-[110] w-11 h-11 flex items-center justify-center rounded-xl border border-white/20 text-white hover:border-ted-red hover:text-ted-red cursor-hover"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? 'Close menu' : 'Open menu'}
@@ -110,18 +110,22 @@ const Navbar = memo(() => {
 
       <div
         id="mobile-menu"
-        className={`lg:hidden fixed inset-0 top-0 z-[105] bg-pure-black/98 backdrop-blur-lg transition-[visibility,opacity] duration-300 ease-out ${
-          open ? 'visible opacity-100' : 'invisible opacity-0 pointer-events-none'
+        className={`mobile-nav-panel lg:hidden fixed inset-0 top-0 z-[105] ${
+          open ? 'visible' : 'invisible pointer-events-none'
         }`}
         style={{ paddingTop: 'env(safe-area-inset-top)' }}
         aria-hidden={!open}
       >
-        <div className="flex flex-col items-stretch justify-center min-h-[100dvh] px-6 pt-20 pb-10 gap-1 max-w-md mx-auto w-full">
+        <div
+          className={`flex flex-col items-stretch justify-center min-h-[100dvh] px-6 pt-20 pb-10 gap-0.5 max-w-md mx-auto w-full max-[380px]:px-5 transition-[opacity,transform] duration-300 ease-out ${
+            open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3 pointer-events-none'
+          }`}
+        >
           {NAV_LINKS.map(({ id, label }) => (
             <a
               key={id}
               href={`#${id}`}
-              className="py-4 text-center text-lg font-medium text-white/95 border-b border-white/10 hover:text-ted-red transition-colors cursor-hover"
+              className="py-3.5 text-center text-lg font-medium text-white border-b border-white/10 hover:text-ted-red transition-colors duration-200 ease-out cursor-hover active:opacity-80"
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection(id);

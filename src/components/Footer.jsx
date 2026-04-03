@@ -29,9 +29,9 @@ const Footer = memo(() => {
   }, []);
 
   return (
-    <footer ref={sectionRef} className="border-t border-white/10 py-12 sm:py-16 px-4 sm:px-6">
+    <footer ref={sectionRef} className="border-t border-white/10 py-8 sm:py-16 px-4 sm:px-6">
       <div ref={footerRef} className="max-w-7xl mx-auto w-full min-w-0">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-6 mb-10 sm:mb-12 text-center md:text-left">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-5 sm:gap-8 md:gap-6 mb-6 sm:mb-12 text-center md:text-left">
           <div className="md:mb-0 w-full md:w-auto">
             <h3 className="text-2xl sm:text-3xl font-bold mb-2">
               TEDx<span className="text-ted-red">IGDTU</span>
@@ -55,7 +55,7 @@ const Footer = memo(() => {
           </div>
         </div>
         
-        <div className="border-t border-white/10 pt-8">
+        <div className="border-t border-white/10 pt-6 sm:pt-8">
           <p className="text-white/60 text-sm leading-relaxed mb-4">
             This independent TEDx event is operated under license from TED. TED is a nonprofit 
             organization devoted to Ideas Worth Spreading, usually in the form of short, powerful 

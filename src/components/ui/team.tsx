@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { UserStar } from 'lucide-react';
 
 import { Marquee } from '../../demos/ui/marquee';
@@ -53,10 +53,15 @@ const teamMembers: TeamMember[] = [
  * Adapted from a Next.js/shadcn component to work in your CRA + Tailwind setup.
  */
 export default function Team() {
+  const [marqueePaused, setMarqueePaused] = useState(false);
+  const toggleMarquee = useCallback(() => {
+    setMarqueePaused((p) => !p);
+  }, []);
+
   return (
-    <section className="relative w-full overflow-hidden border-t border-white/10 bg-pure-black py-20 sm:py-28">
+    <section className="relative w-full overflow-hidden border-t border-white/10 bg-pure-black py-12 sm:py-24 md:py-28">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="mx-auto mb-16 flex max-w-5xl flex-col items-center px-2 text-center">
+        <div className="mx-auto mb-10 sm:mb-16 flex max-w-5xl flex-col items-center px-2 text-center">
           <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-ted-red text-white">
             <UserStar size={22} />
           </div>
@@ -74,9 +79,22 @@ export default function Team() {
           <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-28 bg-gradient-to-r from-white/10 to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-28 bg-gradient-to-l from-white/10 to-transparent" />
 
-          <Marquee className="[--gap:1.5rem]" pauseOnHover>
+          <Marquee className="[--gap:1.5rem]" paused={marqueePaused} pauseOnHover={false}>
             {teamMembers.map((member) => (
-              <div key={member.name} className="group flex w-64 shrink-0 flex-col">
+              <div
+                key={member.name}
+                className="group flex w-64 shrink-0 flex-col cursor-pointer rounded-[var(--card-radius)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ted-red"
+                role="button"
+                tabIndex={0}
+                aria-label={`${member.name}, ${member.role}. Tap to ${marqueePaused ? 'resume' : 'pause'} marquee.`}
+                onClick={toggleMarquee}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleMarquee();
+                  }
+                }}
+              >
                 <div className="relative h-72 w-full overflow-hidden rounded-[var(--card-radius)] border border-white/10 bg-pure-black">
                   <img
                     alt={member.name}

@@ -64,26 +64,26 @@ const EventOverview = memo(() => {
     <section
       id="event-overview"
       ref={sectionRef}
-      className="scroll-mt-24 md:scroll-mt-28 py-20 sm:py-28 md:py-32 px-4 sm:px-6 border-t border-white/10"
+      className="scroll-mt-24 md:scroll-mt-28 py-12 sm:py-24 md:py-32 px-4 sm:px-6 border-t border-white/10"
     >
       <div className="max-w-7xl mx-auto w-full min-w-0">
         <h2
           ref={titleRef}
-          className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-10 sm:mb-14 text-center px-2"
+          className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-6 sm:mb-12 md:mb-14 text-center px-2"
         >
           Event <span className="text-ted-red">Overview</span>
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-start">
           <div
             ref={detailsRef}
-            className="card-premium glass-panel-light p-6 sm:p-8 md:p-10 space-y-6"
+            className="card-premium glass-panel-light p-5 sm:p-8 md:p-10 space-y-4 sm:space-y-6"
           >
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-ted-red/90">
               Event details
             </h3>
-            <dl className="space-y-5">
-              <div className="border-b border-white/10 pb-5">
+            <dl className="space-y-3 sm:space-y-5">
+              <div className="border-b border-white/10 pb-4 sm:pb-5">
                 <dt className="text-xs uppercase tracking-wider text-white/50 mb-1">
                   Edition
                 </dt>
@@ -91,11 +91,11 @@ const EventOverview = memo(() => {
                   TEDxIGDTU 2026
                 </dd>
               </div>
-              <div className="border-b border-white/10 pb-5">
+              <div className="border-b border-white/10 pb-4 sm:pb-5">
                 <dt className="text-xs uppercase tracking-wider text-white/50 mb-1">
                   Dates
                 </dt>
-                <dd className="text-base sm:text-lg text-white/90 leading-relaxed">
+                <dd className="text-base sm:text-lg text-white/90 leading-snug sm:leading-relaxed">
                   <span className="text-white font-medium">9 April</span>
                   <span className="text-white/70"> - Pre-event</span>
                   <br />
@@ -103,7 +103,7 @@ const EventOverview = memo(() => {
                   <span className="text-white/70"> - Main event</span>
                 </dd>
               </div>
-              <div className="border-b border-white/10 pb-5">
+              <div className="border-b border-white/10 pb-4 sm:pb-5">
                 <dt className="text-xs uppercase tracking-wider text-white/50 mb-1">
                   Venue
                 </dt>
@@ -122,8 +122,8 @@ const EventOverview = memo(() => {
             </dl>
           </div>
 
-          <div className="min-w-0 rounded-[var(--card-radius)] border border-white/10 px-6 py-8 sm:px-8 sm:py-10 glass-panel-light">
-            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-ted-red/90 mb-6">
+          <div className="min-w-0 rounded-[var(--card-radius)] border border-white/10 px-5 py-6 sm:px-8 sm:py-10 glass-panel-light">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-ted-red/90 mb-4 sm:mb-6">
               Objectives
             </h3>
             <ul
