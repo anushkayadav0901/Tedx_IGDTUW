@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, memo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import retroImage from '../assets/campus-retro.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -77,9 +78,9 @@ const About = memo(({ config }) => {
 
           <div
             ref={placeholderRef}
-            className="card-premium group cursor-hover w-full max-w-full min-h-[14rem] sm:min-h-[18rem] md:h-96 md:min-h-0 aspect-[4/3] md:aspect-auto flex items-center justify-center relative overflow-hidden"
+            className="card-premium group cursor-hover w-full max-w-full relative overflow-hidden"
           >
-            <p className="text-white/40 text-sm relative z-10">3D Model Placeholder</p>
+            <img src={retroImage} className="block w-full h-auto object-cover" alt="TEDx Image" />
           </div>
         </div>
       </div>

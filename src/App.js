@@ -8,7 +8,7 @@ import CustomCursor from './components/CustomCursor';
 import Hero from './components/Hero';
 import About from './components/About';
 import Theme from './components/Theme';
-import EventOverview from './components/EventOverview';
+
 import Speakers from './components/Speakers';
 import Experience from './components/Experience';
 import Timeline from './components/Timeline';
@@ -127,7 +127,7 @@ function App() {
         <Hero config={config} />
         <About config={config} />
         <Theme config={config} />
-        <EventOverview />
+
         <Speakers config={config} />
         <Experience config={config} />
         <Timeline config={config} />
