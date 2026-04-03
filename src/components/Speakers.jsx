@@ -15,7 +15,7 @@ const distinguishedSpeakers = [
   },
   {
     role: 'Alumni Speaker',
-    focus: 'An IGDTU alumna story—leadership, grit, and growth.',
+    focus: 'An IGDTU alumna story - leadership, grit, and growth.',
   },
   {
     role: 'Social Media Influencer',
@@ -106,7 +106,7 @@ const Speakers = memo(({ config }) => {
           Distinguished <span className="text-ted-red">Speakers</span>
         </h2>
         <p className="text-center text-white/60 text-sm sm:text-base max-w-2xl mx-auto mb-10 sm:mb-14 md:mb-16 px-2">
-          Voices spanning leadership, policy, alumni excellence, digital culture, and deep expertise—unified by ideas worth spreading.
+          Voices spanning leadership, policy, alumni excellence, digital culture, and deep expertise - unified by ideas worth spreading.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
@@ -129,7 +129,7 @@ const Speakers = memo(({ config }) => {
               >
                 <div className="speaker-card-media-inner absolute inset-0 flex items-center justify-center">
                   <p className="text-white/40 text-xs sm:text-sm relative z-[1] px-4 text-center">
-                    Speaker visual — forthcoming
+                    Speaker visual - forthcoming
                   </p>
                 </div>
                 <div className="speaker-card-media-fade" aria-hidden />

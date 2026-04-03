@@ -97,10 +97,10 @@ const EventOverview = memo(() => {
                 </dt>
                 <dd className="text-base sm:text-lg text-white/90 leading-relaxed">
                   <span className="text-white font-medium">9 April</span>
-                  <span className="text-white/70"> — Pre-event</span>
+                  <span className="text-white/70"> - Pre-event</span>
                   <br />
                   <span className="text-white font-medium">10 April</span>
-                  <span className="text-white/70"> — Main event</span>
+                  <span className="text-white/70"> - Main event</span>
                 </dd>
               </div>
               <div className="border-b border-white/10 pb-5">

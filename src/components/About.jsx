@@ -60,7 +60,7 @@ const About = memo(({ config }) => {
               <p className="text-base sm:text-lg text-white/80 mb-6 leading-relaxed">
                 TEDx carries forward TED's mission of{' '}
                 <span className="text-white font-medium">ideas worth spreading</span>
-                — short, powerful talks that spark curiosity and conversation.
+                - short, powerful talks that spark curiosity and conversation.
               </p>
               <p className="text-base sm:text-lg text-white/80 mb-6 leading-relaxed">
                 TEDxIGDTU is a <span className="text-white font-medium">community-driven</span>{' '}
@@ -69,7 +69,7 @@ const About = memo(({ config }) => {
               </p>
               <p className="text-base sm:text-lg text-white/80 leading-relaxed">
                 Together we bridge the <span className="text-white font-medium">global TED ethos</span>{' '}
-                with <span className="text-white font-medium">local stories</span>—ideas that travel
+                with <span className="text-white font-medium">local stories</span> - ideas that travel
                 the world, rooted in our own backyard.
               </p>
             </div>

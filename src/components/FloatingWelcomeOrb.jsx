@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, memo, useCallback } from 'react';
 
 const LINE1 = 'TEDxIGDTU';
 const LINE2 =
-  'Welcome to a day of ideas worth spreading—thought-provoking talks and meaningful connections, live on campus.';
+  'Welcome to a day of ideas worth spreading - thought-provoking talks and meaningful connections, live on campus.';
 
 const FloatingWelcomeOrb = memo(() => {
   const [open, setOpen] = useState(false);

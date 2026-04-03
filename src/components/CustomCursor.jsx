@@ -38,8 +38,8 @@ const CustomCursor = memo(() => {
         duration: 0.3,
       });
       gsap.to(cursorGlowRef.current, {
-        opacity: 0.65,
-        scale: 1.06,
+        opacity: 0.82,
+        scale: 1.08,
         duration: 0.35,
       });
     };
@@ -51,7 +51,7 @@ const CustomCursor = memo(() => {
         duration: 0.3,
       });
       gsap.to(cursorGlowRef.current, {
-        opacity: 0.42,
+        opacity: 0.58,
         scale: 1,
         duration: 0.4,
       });
@@ -87,7 +87,7 @@ const CustomCursor = memo(() => {
     document.addEventListener('mouseout', handleMouseOut);
 
     gsap.set(cursorGlowRef.current, {
-      opacity: 0.42,
+      opacity: 0.55,
       x: 0,
       y: 0,
       xPercent: -50,

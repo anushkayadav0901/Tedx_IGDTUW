@@ -15,6 +15,7 @@ import Timeline from './components/Timeline';
 import Sponsors from './components/Sponsors';
 import Footer from './components/Footer';
 import FloatingWelcomeOrb from './components/FloatingWelcomeOrb';
+import Team from './components/ui/team';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -70,7 +71,7 @@ function App() {
 
     requestAnimationFrame(raf);
 
-    // Connect Lenis with GSAP ScrollTrigger (single rAF loop only — avoid double velocity / layout thrash)
+    // Connect Lenis with GSAP ScrollTrigger (single rAF loop only - avoid double velocity / layout thrash)
     lenis.on('scroll', ScrollTrigger.update);
 
     // Magnetic button effect (only on desktop)
@@ -131,6 +132,7 @@ function App() {
         <Experience config={config} />
         <Timeline config={config} />
         <Sponsors config={config} />
+        <Team />
         <Footer />
       </div>
       {!loading && <FloatingWelcomeOrb />}

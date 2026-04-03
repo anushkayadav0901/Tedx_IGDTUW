@@ -86,7 +86,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Space Grotesk', sans-serif;
 }
 
-/* Hero: spotlight — stronger center lift, soft falloff (mask = alpha on dim layer) */
+/* Hero: spotlight - stronger center lift, soft falloff (mask = alpha on dim layer) */
 .hero-spotlight-isolate {
   isolation: isolate;
   contain: layout style;
@@ -144,12 +144,12 @@ h1, h2, h3, h4, h5, h6 {
 .cursor-glow-blob {
   background: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.16) 0%,
-    rgba(255, 60, 60, 0.09) 38%,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 0, 0, 0.13) 38%,
     transparent 72%
   );
-  filter: blur(14px);
-  opacity: 0.42;
+  filter: blur(18px);
+  opacity: 0.5;
 }
 
 .hero-text-glow {
@@ -222,7 +222,7 @@ a:hover::after {
   width: 100%;
 }
 
-/* Premium cards + CTAs — TEDx-style depth (hover-capable devices only) */
+/* Premium cards + CTAs - TEDx-style depth (hover-capable devices only) */
 @layer components {
   .card-premium {
     border-radius: var(--card-radius);
@@ -305,7 +305,9 @@ a:hover::after {
     .btn-primary:hover {
       transform: scale(1.03);
       background-color: var(--ted-accent-hover);
-      box-shadow: 0 8px 24px rgba(255, 0, 0, 0.25);
+      box-shadow:
+        0 10px 28px rgba(255, 0, 0, 0.35),
+        0 0 44px rgba(255, 0, 0, 0.22);
     }
   }
 
@@ -329,7 +331,9 @@ a:hover::after {
       background-color: var(--ted-accent);
       border-color: var(--ted-accent);
       color: #ffffff;
-      box-shadow: 0 8px 24px rgba(255, 0, 0, 0.22);
+      box-shadow:
+        0 10px 28px rgba(255, 0, 0, 0.32),
+        0 0 40px rgba(255, 0, 0, 0.20);
     }
   }
 
@@ -380,9 +384,9 @@ a:hover::after {
   will-change: transform;
 }
 
-/* ——— Mobile-only (≤768px): portrait vs landscape — desktop (≥769px) unchanged ——— */
+/* ----- Mobile-only (≤768px): portrait vs landscape - desktop (≥769px) unchanged ----- */
 
-/* Portrait phone: stacked hero — portrait art, content below, fits first screen */
+/* Portrait phone: stacked hero - portrait art, content below, fits first screen */
 @media (max-width: 768px) and (orientation: portrait) {
   .grain-texture {
     animation: none;
@@ -504,7 +508,7 @@ a:hover::after {
   }
 }
 
-/* Landscape phone / small landscape: overlay hero like desktop — landscape art, row CTAs */
+/* Landscape phone / small landscape: overlay hero like desktop - landscape art, row CTAs */
 @media (max-width: 768px) and (orientation: landscape) {
   .grain-texture {
     animation: none;
@@ -637,7 +641,7 @@ a:hover::after {
   50% { opacity: 0.92; }
 }
 
-/* Floating orb — subtle idle pulse (mobile + desktop); reduced-motion disables globally */
+/* Floating orb - subtle idle pulse (mobile + desktop); reduced-motion disables globally */
 @keyframes floatingOrbPulseSoft {
   0%, 100% {
     box-shadow: 0 6px 20px rgba(229, 9, 20, 0.4);
@@ -660,5 +664,44 @@ a:hover::after {
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .floating-welcome-card {
     background-color: rgba(255, 255, 255, 0.94);
+  }
+}
+
+/* Marquee (team marquee) */
+:root {
+  --marquee-duration: 26s;
+  --marquee-gap: 1.5rem;
+}
+
+.tedx-marquee {
+  position: relative;
+  overflow: hidden;
+  --gap: var(--marquee-gap);
+}
+
+.tedx-marquee__track {
+  display: flex;
+  width: max-content;
+  gap: var(--gap);
+  animation: tedx-marquee var(--marquee-duration) linear infinite;
+  will-change: transform;
+}
+
+.tedx-marquee--pauseOnHover:hover .tedx-marquee__track {
+  animation-play-state: paused;
+}
+
+@keyframes tedx-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tedx-marquee__track {
+    animation: none;
   }
 }

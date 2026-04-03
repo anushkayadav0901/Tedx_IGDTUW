@@ -13,7 +13,6 @@ const Theme = memo(({ config }) => {
   const descRef = useRef(null);
   const line1Ref = useRef(null);
   const line2Ref = useRef(null);
-  const blockRefs = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -75,24 +74,6 @@ const Theme = memo(({ config }) => {
         },
         once: true
       });
-
-      // Barrier blocks (only on desktop)
-      if (config.enableHeavyAnimations) {
-        blockRefs.current.forEach((block, i) => {
-          if (block) {
-            gsap.from(block, {
-              scrollTrigger: {
-                trigger: sectionRef.current,
-                start: 'top 50%',
-                end: 'top 20%',
-                scrub: 1
-              },
-              x: i % 2 === 0 ? -50 : 50,
-              opacity: 0
-            });
-          }
-        });
-      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -104,16 +85,6 @@ const Theme = memo(({ config }) => {
       ref={sectionRef}
       className="relative scroll-mt-24 md:scroll-mt-28 py-20 sm:py-28 md:py-32 px-4 sm:px-6 border-t border-white/10 overflow-hidden"
     >
-      {/* Barrier-like blocks (desktop only) */}
-      {config.enableHeavyAnimations && (
-        <div className="absolute inset-0 pointer-events-none">
-          <div ref={el => blockRefs.current[0] = el} className="absolute top-20 left-10 w-1 h-32 bg-ted-red/20"></div>
-          <div ref={el => blockRefs.current[1] = el} className="absolute top-40 right-20 w-1 h-48 bg-ted-red/20"></div>
-          <div ref={el => blockRefs.current[2] = el} className="absolute bottom-40 left-1/4 w-1 h-40 bg-ted-red/20"></div>
-          <div ref={el => blockRefs.current[3] = el} className="absolute bottom-20 right-1/3 w-1 h-56 bg-ted-red/20"></div>
-        </div>
-      )}
-
       <div className="max-w-4xl mx-auto w-full min-w-0 text-center relative z-10 px-1">
         <div className="mb-6">
           <h2 className="font-bold tracking-tight flex flex-wrap justify-center gap-x-2 sm:gap-x-3 gap-y-1 text-[clamp(2.5rem,8vw+0.5rem,6rem)] leading-tight">
@@ -135,7 +106,7 @@ const Theme = memo(({ config }) => {
         </div>
         
         <p ref={descRef} className="text-base sm:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
-          In a world defined by boundaries—social, technological, and personal—who dares 
+          In a world defined by boundaries - social, technological, and personal - who dares 
           to break through? This year's theme explores the pioneers, innovators, and 
           changemakers who refuse to accept limitations and instead redefine what's possible.
         </p>
