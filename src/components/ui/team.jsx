@@ -1,8 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { UserStar } from 'lucide-react';
 
-import { Marquee } from '../../demos/ui/marquee';
-
 const teamMembers = [
   {
     image: 'https://images.cnippet.dev/image/upload/v1770400411/a1.jpg',
@@ -43,11 +41,9 @@ export default function Team() {
   }, []);
 
   return (
-    <section
-      className="relative w-full overflow-hidden border-t border-white/10 bg-pure-black py-12 sm:py-24 md:py-28"
-    >
+    <section className="relative w-full overflow-hidden border-t border-white/10 bg-pure-black py-12 md:py-20 lg:py-24">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="mx-auto mb-10 sm:mb-16 flex max-w-5xl flex-col items-center px-2 text-center">
+        <div className="mx-auto mb-10 lg:mb-12 flex max-w-5xl flex-col items-center px-0 text-center">
           <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-ted-red text-white">
             <UserStar size={22} />
           </div>
@@ -60,41 +56,24 @@ export default function Team() {
           </h3>
         </div>
 
-        <div className="relative w-full">
-          <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-28 bg-gradient-to-r from-white/10 to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-28 bg-gradient-to-l from-white/10 to-transparent" />
-
-          <Marquee className="[--gap:1.5rem]" paused={marqueePaused} pauseOnHover={false}>
-            {teamMembers.map((member) => (
-              <div
-                key={member.name}
-                className="group flex w-64 shrink-0 flex-col cursor-pointer rounded-[var(--card-radius)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ted-red"
-                role="button"
-                tabIndex={0}
-                aria-label={`${member.name}, ${member.role}. Tap to ${marqueePaused ? 'resume' : 'pause'} directors marquee.`}
-                onClick={toggleMarquee}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    toggleMarquee();
-                  }
-                }}
-              >
-                <div className="relative h-72 w-full overflow-hidden rounded-[var(--card-radius)] border border-white/10 bg-pure-black">
-                  <img
-                    alt={member.name}
-                    className="h-full w-full object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
-                    loading="lazy"
-                    src={member.image}
-                  />
-                  <div className="absolute bottom-0 w-full bg-white/5 p-3 backdrop-blur">
-                    <h3 className="font-semibold text-white">{member.name}</h3>
-                    <p className="text-white/70 text-sm">{member.role}</p>
-                  </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 mx-auto w-full">
+          {teamMembers.map((member) => (
+            <div key={member.name} className="group flex w-full flex-col items-center">
+              <div className="relative aspect-[3/4] h-auto w-full max-w-[20rem] sm:max-w-none overflow-hidden rounded-2xl border border-white/10 bg-pure-black">
+                <img
+                  alt={member.name}
+                  className="h-full w-full object-cover grayscale-0 lg:grayscale transition-all duration-300 lg:group-hover:grayscale-0"
+                  loading="lazy"
+                  src={member.image}
+                />
+                <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-5 pt-12">
+                  <h3 className="font-semibold text-lg text-white mb-1">{member.name}</h3>
+                  <div className="w-8 h-0.5 bg-ted-red mb-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <p className="text-white/80 text-sm tracking-wide">{member.role}</p>
                 </div>
               </div>
-            ))}
-          </Marquee>
+            </div>
+          ))}
         </div>
       </div>
     </section>

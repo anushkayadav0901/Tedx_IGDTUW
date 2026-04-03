@@ -90,19 +90,16 @@ const Navbar = memo(() => {
           <span className="sr-only">{open ? 'Close' : 'Menu'}</span>
           <span className="flex flex-col gap-1.5 w-5" aria-hidden>
             <span
-              className={`block h-0.5 w-full bg-current transition-transform origin-center ${
-                open ? 'translate-y-2 rotate-45' : ''
-              }`}
+              className={`block h-0.5 w-full bg-current transition-transform origin-center ${open ? 'translate-y-2 rotate-45' : ''
+                }`}
             />
             <span
-              className={`block h-0.5 w-full bg-current transition-opacity ${
-                open ? 'opacity-0' : ''
-              }`}
+              className={`block h-0.5 w-full bg-current transition-opacity ${open ? 'opacity-0' : ''
+                }`}
             />
             <span
-              className={`block h-0.5 w-full bg-current transition-transform origin-center ${
-                open ? '-translate-y-2 -rotate-45' : ''
-              }`}
+              className={`block h-0.5 w-full bg-current transition-transform origin-center ${open ? '-translate-y-2 -rotate-45' : ''
+                }`}
             />
           </span>
         </button>
@@ -110,16 +107,14 @@ const Navbar = memo(() => {
 
       <div
         id="mobile-menu"
-        className={`mobile-nav-panel lg:hidden fixed inset-0 top-0 z-[105] ${
-          open ? 'visible' : 'invisible pointer-events-none'
-        }`}
+        className={`lg:hidden fixed inset-0 top-0 z-[105] bg-pure-black/98 backdrop-blur-lg overflow-y-auto transition-[visibility,opacity] duration-300 ease-out ${open ? 'visible opacity-100' : 'invisible opacity-0 pointer-events-none'
+          }`}
         style={{ paddingTop: 'env(safe-area-inset-top)' }}
         aria-hidden={!open}
       >
         <div
-          className={`flex flex-col items-stretch justify-center min-h-[100dvh] px-6 pt-20 pb-10 gap-0.5 max-w-md mx-auto w-full max-[380px]:px-5 transition-[opacity,transform] duration-300 ease-out ${
-            open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3 pointer-events-none'
-          }`}
+          className={`flex flex-col items-stretch justify-center min-h-[100dvh] px-6 pt-20 pb-10 gap-0.5 max-w-md mx-auto w-full max-[380px]:px-5 transition-[opacity,transform] duration-300 ease-out ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3 pointer-events-none'
+            }`}
         >
           {NAV_LINKS.map(({ id, label }) => (
             <a

@@ -64,7 +64,7 @@ const Theme = memo(({ config }) => {
 
       // Batch remaining animations
       const elements = [subtitleRef.current, line1Ref.current, line2Ref.current, descRef.current];
-      
+
       ScrollTrigger.batch(elements, {
         start: 'top 80%',
         onEnter: (batch) => {
@@ -87,7 +87,7 @@ const Theme = memo(({ config }) => {
     <section
       id="theme"
       ref={sectionRef}
-      className="relative scroll-mt-24 md:scroll-mt-28 py-12 sm:py-24 md:py-32 px-4 sm:px-6 border-t border-white/10 overflow-hidden"
+      className="relative scroll-mt-24 md:scroll-mt-28 py-12 md:py-20 lg:py-24 px-4 sm:px-6 border-t border-white/10 overflow-hidden"
     >
       <div className="max-w-4xl mx-auto w-full min-w-0 text-center relative z-10 px-1">
         <div className="mb-4 max-md:mb-3 sm:mb-6">
@@ -96,29 +96,22 @@ const Theme = memo(({ config }) => {
             <span ref={barriersRef} className="text-ted-red">BARRIERS</span>
           </h2>
         </div>
-        
+
         <div ref={line1Ref} className="w-24 sm:w-32 h-0.5 bg-ted-red mx-auto mb-4 max-md:mb-3 sm:mb-6"></div>
-        
-        <p ref={subtitleRef} className="text-[clamp(1.25rem,3vw+0.5rem,1.875rem)] font-light mb-5 sm:mb-12 text-white/90 px-2 leading-snug sm:leading-normal">
+
+        <p ref={subtitleRef} className="text-[clamp(1.25rem,3vw+0.5rem,1.875rem)] font-light mb-6 md:mb-10 text-white/90 px-2">
           Who Shapes the Future?
         </p>
-        
-        <div ref={line2Ref} className="w-20 sm:w-24 h-0.5 bg-ted-red mx-auto mb-5 sm:mb-12"></div>
-        
-        <button
-          type="button"
-          onClick={toggleModel}
-          aria-pressed={modelActive}
-          className={`card-premium cursor-hover min-h-[10rem] sm:min-h-[16rem] md:h-64 w-full max-w-full mb-5 sm:mb-12 flex items-center justify-center relative overflow-hidden mx-auto text-center font-inherit transition-[border-color,box-shadow] duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ted-red ${
-            modelActive ? 'interactive-active' : ''
-          }`}
-        >
-          <span className="text-white/40 text-sm">3D Interactive Element Space</span>
-        </button>
-        
+
+        <div ref={line2Ref} className="w-20 sm:w-24 h-0.5 bg-ted-red mx-auto mb-6 md:mb-10"></div>
+
+        <div className="card-premium cursor-hover aspect-[4/3] md:aspect-auto md:h-64 w-full max-w-full mb-8 md:mb-12 flex items-center justify-center relative overflow-hidden mx-auto">
+          <p className="text-white/40 text-sm">3D Interactive Element Space</p>
+        </div>
+
         <p ref={descRef} className="text-base sm:text-lg text-white/80 leading-snug sm:leading-relaxed max-w-2xl mx-auto">
-          In a world defined by boundaries - social, technological, and personal - who dares 
-          to break through? This year's theme explores the pioneers, innovators, and 
+          In a world defined by boundaries - social, technological, and personal - who dares
+          to break through? This year's theme explores the pioneers, innovators, and
           changemakers who refuse to accept limitations and instead redefine what's possible.
         </p>
       </div>

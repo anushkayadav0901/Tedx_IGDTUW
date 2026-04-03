@@ -11,19 +11,19 @@ const timelineData = [
     description: 'Submit your idea worth spreading'
   },
   {
-    date: 'April 10, 2026',
+    date: 'March 25, 2026',
     title: 'Early Bird Registration',
     description: 'Get your tickets at special rates'
   },
   {
-    date: 'May 5, 2026',
-    title: 'Speaker Lineup Announcement',
-    description: 'Meet our incredible speakers'
+    date: 'April 9, 2026',
+    title: 'Pre-Event',
+    description: 'Opening activities'
   },
   {
-    date: 'June 20, 2026',
-    title: 'Event Day',
-    description: 'IGDTU Campus, New Delhi'
+    date: 'April 10, 2026',
+    title: 'Main Event',
+    description: 'TEDx conference'
   }
 ];
 
@@ -91,52 +91,36 @@ const Timeline = memo(() => {
     <section
       id="timeline"
       ref={sectionRef}
-      className="scroll-mt-24 md:scroll-mt-28 py-12 sm:py-24 md:py-32 px-4 sm:px-6 border-t border-white/10"
+      className="scroll-mt-24 md:scroll-mt-28 py-12 md:py-20 lg:py-24 px-4 sm:px-6 border-t border-white/10"
     >
       <div className="max-w-4xl mx-auto w-full min-w-0">
-        <h2 ref={titleRef} className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-10 sm:mb-14 md:mb-16 text-center px-2">
+        <h2 ref={titleRef} className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-8 md:mb-12 text-center px-2">
           Event <span className="text-ted-red">Timeline</span>
         </h2>
-        
+
         <div className="relative pl-0 md:pl-0">
           <div
             ref={lineRef}
             className="absolute left-[7px] md:left-1/2 top-0 bottom-0 w-px bg-white/20 md:-translate-x-1/2"
           />
-          
+
           {timelineData.map((item, index) => (
-            <div 
+            <div
               key={index}
               ref={el => itemsRef.current[index] = el}
-              className={`relative mb-8 sm:mb-16 last:mb-0 ${
-                index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:ml-auto md:text-left'
-              } md:w-1/2 cursor-hover group`}
+              className={`relative mb-8 md:mb-16 last:mb-0 ${index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12 md:ml-auto md:text-left'
+                } md:w-1/2 cursor-hover group`}
             >
               <div
-                className={`absolute top-1 w-4 h-4 bg-ted-red rounded-full border-4 border-pure-black group-hover:scale-150 transition-transform duration-300 left-[7px] -translate-x-1/2 md:translate-x-0 ${
-                  index % 2 === 0 ? 'md:left-auto md:right-[-9px]' : 'md:left-[-9px] md:right-auto'
-                }`}
-              />
-              
-              <div className="pl-8 md:pl-0 min-w-0">
-                <div
-                  role="button"
-                  tabIndex={0}
-                  aria-pressed={selected.has(index)}
-                  onClick={() => toggleItem(index)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      toggleItem(index);
-                    }
-                  }}
-                  className={`card-premium group cursor-pointer p-5 sm:p-6 text-left md:text-inherit transition-[border-color,box-shadow] duration-200 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ted-red ${
-                    selected.has(index) ? 'interactive-active' : ''
+                className={`absolute top-1 w-4 h-4 bg-ted-red rounded-full border-4 border-pure-black md:group-hover:scale-150 transition-transform duration-300 left-[7px] -translate-x-1/2 md:translate-x-0 ${index % 2 === 0 ? 'md:left-auto md:right-[-9px]' : 'md:left-[-9px] md:right-auto'
                   }`}
-                >
-                  <p className="text-ted-red font-medium mb-2">{item.date}</p>
-                  <h3 className="text-xl sm:text-2xl font-bold mb-2 group-hover:text-ted-red transition-colors duration-[250ms] ease-out break-words">{item.title}</h3>
-                  <p className="text-white/70">{item.description}</p>
+              />
+
+              <div className="pl-8 md:pl-0 min-w-0">
+                <div className="card-premium group cursor-hover p-4 sm:p-6 text-left md:text-inherit">
+                  <p className="text-ted-red font-medium mb-1 sm:mb-2 text-sm sm:text-base">{item.date}</p>
+                  <h3 className="text-xl sm:text-2xl font-bold mb-2 text-ted-red lg:text-white lg:group-hover:text-ted-red transition-colors duration-[250ms] ease-out break-words">{item.title}</h3>
+                  <p className="text-white/70 text-sm sm:text-base">{item.description}</p>
                 </div>
               </div>
             </div>

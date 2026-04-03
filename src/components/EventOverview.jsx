@@ -64,17 +64,17 @@ const EventOverview = memo(() => {
     <section
       id="event-overview"
       ref={sectionRef}
-      className="scroll-mt-24 md:scroll-mt-28 py-12 sm:py-24 md:py-32 px-4 sm:px-6 border-t border-white/10"
+      className="scroll-mt-24 md:scroll-mt-28 py-12 md:py-20 lg:py-24 px-4 sm:px-6 border-t border-white/10"
     >
       <div className="max-w-7xl mx-auto w-full min-w-0">
         <h2
           ref={titleRef}
-          className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-6 sm:mb-12 md:mb-14 text-center px-2"
+          className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-8 md:mb-12 text-center px-2"
         >
           Event <span className="text-ted-red">Overview</span>
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           <div
             ref={detailsRef}
             className="card-premium glass-panel-light p-5 sm:p-8 md:p-10 space-y-4 sm:space-y-6"

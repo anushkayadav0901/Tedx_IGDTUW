@@ -108,13 +108,13 @@ const Speakers = memo(({ config }) => {
     <section
       id="speakers"
       ref={sectionRef}
-      className="scroll-mt-24 md:scroll-mt-28 py-12 sm:py-24 md:py-32 px-4 sm:px-6 border-t border-white/10"
+      className="scroll-mt-24 md:scroll-mt-28 py-12 md:py-20 lg:py-24 px-4 sm:px-6 border-t border-white/10"
     >
       <div className="max-w-7xl mx-auto w-full min-w-0">
         <h2 ref={titleRef} className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-4 sm:mb-6 text-center px-2">
           Distinguished <span className="text-ted-red">Speakers</span>
         </h2>
-        <p className="text-center text-white/60 text-sm sm:text-base max-w-2xl mx-auto mb-6 sm:mb-12 md:mb-16 px-2 leading-snug sm:leading-normal">
+        <p className="text-center text-white/60 text-sm sm:text-base max-w-2xl mx-auto mb-8 md:mb-12 px-2">
           Voices spanning leadership, policy, alumni excellence, digital culture, and deep expertise - unified by ideas worth spreading.
         </p>
 
@@ -125,9 +125,8 @@ const Speakers = memo(({ config }) => {
               ref={(el) => {
                 cardsRef.current[index] = el;
               }}
-              className={`speaker-card group cursor-pointer flex flex-col min-w-0 transition-[border-color,box-shadow] duration-200 ease-out focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ted-red ${
-                selected.has(index) ? 'interactive-active' : ''
-              }`}
+              className={`speaker-card group cursor-pointer flex flex-col min-w-0 transition-[border-color,box-shadow] duration-200 ease-out focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-ted-red ${selected.has(index) ? 'interactive-active' : ''
+                }`}
               onClick={() => toggleCard(index)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -155,12 +154,12 @@ const Speakers = memo(({ config }) => {
                 </div>
                 <div className="speaker-card-media-fade" aria-hidden />
               </div>
-              <div className="px-5 py-5 sm:px-6 sm:py-6 flex flex-col flex-1">
-                <h3 className="text-xl sm:text-2xl font-bold mb-2 group-hover:text-ted-red transition-colors duration-[250ms] ease-out">
+              <div className="px-4 py-5 sm:px-6 sm:py-6 flex flex-col flex-1">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 text-ted-red lg:text-white lg:group-hover:text-ted-red transition-colors duration-[250ms] ease-out">
                   {speaker.role}
                 </h3>
-                <div className="w-12 h-0.5 bg-ted-red mb-3 transform origin-left scale-x-100 group-hover:scale-x-[1.15] transition-transform duration-[250ms] ease-out" />
-                <p className="text-white/70 text-sm sm:text-base leading-snug sm:leading-relaxed">{speaker.focus}</p>
+                <div className="w-12 h-0.5 bg-ted-red mb-3 transform origin-left scale-x-[1.15] lg:scale-x-100 lg:group-hover:scale-x-[1.15] transition-transform duration-[250ms] ease-out" />
+                <p className="text-white/70 text-sm sm:text-base leading-relaxed">{speaker.focus}</p>
               </div>
             </article>
           ))}
