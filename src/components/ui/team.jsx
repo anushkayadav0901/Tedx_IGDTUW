@@ -41,7 +41,7 @@ export default function Team() {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden border-t border-white/10 bg-pure-black py-12 md:py-20 lg:py-24">
+    <section id="team" className="relative w-full overflow-hidden border-t border-white/10 bg-pure-black py-12 md:py-20 lg:py-24">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mx-auto mb-10 lg:mb-12 flex max-w-5xl flex-col items-center px-0 text-center">
           <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-ted-red text-white">

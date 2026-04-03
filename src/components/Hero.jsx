@@ -302,7 +302,8 @@ const Hero = memo(({ config = {} }) => {
           <div className="text-center max-w-5xl w-full min-w-0 pointer-events-auto mx-auto">
             <h1
               ref={titleRef}
-              className="hero-title-text font-bold tracking-tight mb-3 sm:mb-6 text-[clamp(2.25rem,10vw+1rem,8rem)] md:leading-[1.05] leading-tight break-words text-balance px-1 sm:px-0 hero-text-glow"
+              style={{ fontFamily: "Times New Roman, serif" }}
+              className="hero-title-text font-extrabold font-serif tracking-wide mb-3 sm:mb-6 text-[clamp(2.25rem,10vw+1rem,8rem)] md:leading-[1.05] leading-tight break-words text-balance px-1 sm:px-0 hero-text-glow"
             >
               TEDx<span className="text-ted-red">IGDTU</span>
             </h1>
@@ -317,6 +318,19 @@ const Hero = memo(({ config = {} }) => {
             >
               Beyond Barriers: Who Shapes the Future?
             </h2>
+
+            <div className="flex justify-center mb-10 sm:mb-12">
+              <a 
+                href="/competition" 
+                className="inline-flex items-center px-4 py-2 text-base rounded-full bg-red-500/30 text-white border border-red-500/60 shadow-[0_0_20px_rgba(255,0,0,0.4)] animate-[pulse_3s_ease-in-out_infinite] hover:scale-105 hover:bg-red-500 hover:shadow-[0_0_30px_rgba(255,0,0,0.6)] hover:animate-none transition-all duration-300 cursor-hover"
+              >
+                <span className="relative flex h-2 w-2 mr-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-red-100"></span>
+                </span>
+                Competition Live
+              </a>
+            </div>
 
             <div
               ref={ctaRef}

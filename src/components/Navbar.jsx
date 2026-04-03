@@ -5,13 +5,14 @@ const NAV_LINKS = [
   { id: 'about', label: 'About' },
   { id: 'theme', label: 'Theme' },
   { id: 'speakers', label: 'Speakers' },
-  { id: 'experience', label: 'Experience' },
   { id: 'timeline', label: 'Timeline' },
   { id: 'partners', label: 'Partners' },
+  { id: 'team', label: 'Team' },
 ];
 
 const Navbar = memo(() => {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('hero');
 
   const close = useCallback(() => setOpen(false), []);
 
@@ -45,13 +46,34 @@ const Navbar = memo(() => {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-30% 0px -60% 0px' }
+    );
+
+    NAV_LINKS.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <header
       role="banner"
-      className="fixed top-0 left-0 right-0 z-[100] border-b border-white/10 bg-pure-black/90 backdrop-blur-md supports-[backdrop-filter]:bg-pure-black/80"
+      className="fixed top-0 left-0 right-0 z-[100] border-b border-white/10 bg-black/70 backdrop-blur-md supports-[backdrop-filter]:bg-black/60 shadow-[0_2px_20px_rgba(0,0,0,0.6)]"
       style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 md:h-[4.25rem]">
+      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-red-500/40 blur-sm pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16 md:h-[4.25rem] relative z-10">
         <a
           href="#hero"
           className="font-heading font-bold text-lg sm:text-xl tracking-tight cursor-hover shrink-0"
@@ -68,7 +90,11 @@ const Navbar = memo(() => {
             <a
               key={id}
               href={`#${id}`}
-              className="text-sm font-medium text-white/90 hover:text-white transition-colors cursor-hover whitespace-nowrap"
+              className={`relative text-sm font-medium transition-all duration-200 cursor-hover whitespace-nowrap ${
+                active === id
+                  ? "text-red-500 after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-[2px] after:bg-red-500"
+                  : "text-white/70 hover:text-white"
+              }`}
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection(id);
@@ -120,7 +146,11 @@ const Navbar = memo(() => {
             <a
               key={id}
               href={`#${id}`}
-              className="py-3.5 text-center text-lg font-medium text-white border-b border-white/10 hover:text-ted-red transition-colors duration-200 ease-out cursor-hover active:opacity-80"
+              className={`relative py-3.5 text-center text-lg font-medium border-b border-white/10 transition-all duration-200 ease-out cursor-hover active:opacity-80 ${
+                active === id
+                  ? "text-red-500 after:content-[''] after:absolute after:bottom-[-1px] after:left-0 after:w-full after:h-[2px] after:bg-red-500"
+                  : "text-white hover:text-ted-red"
+              }`}
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection(id);
