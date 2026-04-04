@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, memo, useState, useCallback } from 'react';
+import React, { useEffect, useRef, memo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -31,15 +31,6 @@ const Experience = memo(({ config }) => {
   const sectionRef = useRef(null);
   const containerRef = useRef(null);
   const cardsRef = useRef([]);
-  const [selected, setSelected] = useState(() => new Set());
-  const toggleCard = useCallback((index) => {
-    setSelected((prev) => {
-      const next = new Set(prev);
-      if (next.has(index)) next.delete(index);
-      else next.add(index);
-      return next;
-    });
-  }, []);
 
   useEffect(() => {
     if (!config.enableHeavyAnimations) {

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, memo, useState, useCallback } from 'react';
+import React, { useEffect, useRef, memo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -17,15 +17,6 @@ const Sponsors = memo(() => {
   const titleRef = useRef(null);
   const cardsRef = useRef([]);
   const sectionRef = useRef(null);
-  const [selected, setSelected] = useState(() => new Set());
-  const togglePartner = useCallback((index) => {
-    setSelected((prev) => {
-      const next = new Set(prev);
-      if (next.has(index)) next.delete(index);
-      else next.add(index);
-      return next;
-    });
-  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {

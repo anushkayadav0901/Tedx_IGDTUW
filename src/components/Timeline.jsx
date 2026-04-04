@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, memo, useState, useCallback } from 'react';
+import React, { useEffect, useRef, memo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import timelineBgVideo from '../assets/Timeline-bg-video.mp4';
@@ -34,15 +34,6 @@ const Timeline = memo(() => {
   const lineRef = useRef(null);
   const sectionRef = useRef(null);
   const videoRef = useRef(null);
-  const [selected, setSelected] = useState(() => new Set());
-  const toggleItem = useCallback((index) => {
-    setSelected((prev) => {
-      const next = new Set(prev);
-      if (next.has(index)) next.delete(index);
-      else next.add(index);
-      return next;
-    });
-  }, []);
 
   // Video reverse loop effect
   useEffect(() => {

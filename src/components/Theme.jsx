@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, memo, useState, useCallback } from 'react';
+import React, { useEffect, useRef, memo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
@@ -14,10 +14,6 @@ const Theme = memo(({ config }) => {
   const descRef = useRef(null);
   const line1Ref = useRef(null);
   const line2Ref = useRef(null);
-  const [modelActive, setModelActive] = useState(false);
-  const toggleModel = useCallback(() => {
-    setModelActive((v) => !v);
-  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
