@@ -80,7 +80,7 @@ const About = memo(({ config }) => {
             ref={placeholderRef}
             className="card-premium group cursor-hover w-full max-w-full relative overflow-hidden"
           >
-            <img src={retroImage} className="block w-full h-auto object-cover" alt="TEDx Image" />
+            <img src={retroImage} loading="lazy" className="block w-full h-auto object-cover" alt="TEDx Image" />
           </div>
         </div>
       </div>

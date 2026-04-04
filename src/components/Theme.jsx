@@ -2,7 +2,7 @@ import React, { useEffect, useRef, memo, useState, useCallback } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SplitType from 'split-type';
-import retroImage from '../assets/campus-retro.jpg';
+import retroImage from '../assets/Untitled-design.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,24 +30,26 @@ const Theme = memo(({ config }) => {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: 'top 70%',
-            end: 'top 40%',
-            scrub: 1
+            toggleActions: 'play none none none'
           },
           x: -100,
           opacity: 0,
-          stagger: 0.03
+          stagger: 0.02,
+          duration: 0.8,
+          ease: 'power2.out'
         });
 
         gsap.from(barriersSplit.chars, {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: 'top 70%',
-            end: 'top 40%',
-            scrub: 1
+            toggleActions: 'play none none none'
           },
           x: 100,
           opacity: 0,
-          stagger: 0.03
+          stagger: 0.02,
+          duration: 0.8,
+          ease: 'power2.out'
         });
       } else {
         // Simple fade for mobile/low-end
@@ -107,7 +109,7 @@ const Theme = memo(({ config }) => {
         <div ref={line2Ref} className="w-20 sm:w-24 h-0.5 bg-ted-red mx-auto mb-6 md:mb-10"></div>
 
         <div className="card-premium cursor-hover w-full max-w-full mb-8 md:mb-12 relative overflow-hidden mx-auto">
-          <img src={retroImage} className="block w-full h-auto object-cover" alt="TEDx Theme" />
+          <img src={retroImage} loading="lazy" className="block w-full h-auto object-cover" alt="TEDx Theme" />
         </div>
 
         <p ref={descRef} className="text-base sm:text-lg text-white/80 leading-snug sm:leading-relaxed max-w-2xl mx-auto">

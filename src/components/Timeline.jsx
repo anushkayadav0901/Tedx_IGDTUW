@@ -33,6 +33,7 @@ const Timeline = memo(() => {
   const itemsRef = useRef([]);
   const lineRef = useRef(null);
   const sectionRef = useRef(null);
+  const videoRef = useRef(null);
   const [selected, setSelected] = useState(() => new Set());
   const toggleItem = useCallback((index) => {
     setSelected((prev) => {
@@ -41,6 +42,48 @@ const Timeline = memo(() => {
       else next.add(index);
       return next;
     });
+  }, []);
+
+  // Video reverse loop effect
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    let isReversing = false;
+    let animationId = null;
+
+    const reversePlay = () => {
+      if (video.currentTime <= 0) {
+        isReversing = false;
+        video.play();
+      } else {
+        video.currentTime = Math.max(0, video.currentTime - 0.033); // ~30fps reverse
+        animationId = requestAnimationFrame(reversePlay);
+      }
+    };
+
+    const handleTimeUpdate = () => {
+      if (!isReversing && video.currentTime >= video.duration - 0.1) {
+        isReversing = true;
+        video.pause();
+        reversePlay();
+      }
+    };
+
+    const handlePlay = () => {
+      if (isReversing && video.currentTime <= 0.1) {
+        isReversing = false;
+      }
+    };
+
+    video.addEventListener('timeupdate', handleTimeUpdate);
+    video.addEventListener('play', handlePlay);
+    
+    return () => {
+      video.removeEventListener('timeupdate', handleTimeUpdate);
+      video.removeEventListener('play', handlePlay);
+      if (animationId) cancelAnimationFrame(animationId);
+    };
   }, []);
 
   useEffect(() => {
@@ -57,16 +100,17 @@ const Timeline = memo(() => {
         ease: 'power3.out'
       });
 
-      // Timeline line draw
+      // Timeline line draw - simplified
       gsap.from(lineRef.current, {
         scrollTrigger: {
           trigger: lineRef.current,
           start: 'top 80%',
-          end: 'bottom 30%',
-          scrub: 1
+          toggleActions: 'play none none none'
         },
         scaleY: 0,
-        transformOrigin: 'top'
+        transformOrigin: 'top',
+        duration: 1.2,
+        ease: 'power2.out'
       });
 
       // Batch timeline items
@@ -94,7 +138,14 @@ const Timeline = memo(() => {
       ref={sectionRef}
       className="relative overflow-hidden scroll-mt-24 md:scroll-mt-28 py-12 md:py-20 lg:py-24 px-4 sm:px-6 border-t border-white/10"
     >
-      <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover brightness-[0.5] contrast-[0.8] saturate-[0.6] blur-[2px] z-0 pointer-events-none">
+      <video 
+        ref={videoRef}
+        autoPlay 
+        muted 
+        playsInline 
+        preload="auto" 
+        className="absolute inset-0 w-full h-full object-cover brightness-[0.5] contrast-[0.8] saturate-[0.6] blur-[2px] z-0 pointer-events-none"
+      >
         <source src={timelineBgVideo} type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-black/60 z-10 pointer-events-none" />

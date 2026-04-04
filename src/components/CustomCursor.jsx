@@ -6,28 +6,41 @@ const CustomCursor = memo(() => {
   const cursorRingRef = useRef(null);
   const cursorGlowRef = useRef(null);
   useEffect(() => {
+    let rafId = null;
+    let lastX = 0;
+    let lastY = 0;
+    
     const moveCursor = (e) => {
-      gsap.to(cursorDotRef.current, {
-        x: e.clientX,
-        y: e.clientY,
-        duration: 0.1,
-        ease: 'power2.out',
-      });
+      lastX = e.clientX;
+      lastY = e.clientY;
+      
+      if (rafId) return;
+      
+      rafId = requestAnimationFrame(() => {
+        gsap.to(cursorDotRef.current, {
+          x: lastX,
+          y: lastY,
+          duration: 0.1,
+          ease: 'power2.out',
+        });
 
-      gsap.to(cursorRingRef.current, {
-        x: e.clientX,
-        y: e.clientY,
-        duration: 0.3,
-        ease: 'power2.out',
-      });
+        gsap.to(cursorRingRef.current, {
+          x: lastX,
+          y: lastY,
+          duration: 0.3,
+          ease: 'power2.out',
+        });
 
-      gsap.to(cursorGlowRef.current, {
-        x: e.clientX,
-        y: e.clientY,
-        xPercent: -50,
-        yPercent: -50,
-        duration: 0.52,
-        ease: 'power3.out',
+        gsap.to(cursorGlowRef.current, {
+          x: lastX,
+          y: lastY,
+          xPercent: -50,
+          yPercent: -50,
+          duration: 0.52,
+          ease: 'power3.out',
+        });
+        
+        rafId = null;
       });
     };
 

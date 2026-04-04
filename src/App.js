@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, lazy, Suspense } from 'react';
 import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -9,13 +9,15 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Theme from './components/Theme';
 
-import Speakers from './components/Speakers';
-import Experience from './components/Experience';
-import Timeline from './components/Timeline';
-import Sponsors from './components/Sponsors';
-import Footer from './components/Footer';
-import FloatingWelcomeOrb from './components/FloatingWelcomeOrb';
-import Team from './components/ui/team';
+// Lazy load below-the-fold components
+const Speakers = lazy(() => import('./components/Speakers'));
+const Experience = lazy(() => import('./components/Experience'));
+const Timeline = lazy(() => import('./components/Timeline'));
+const Sponsors = lazy(() => import('./components/Sponsors'));
+const Footer = lazy(() => import('./components/Footer'));
+const StageMic = lazy(() => import('./components/StageMic'));
+const FloatingActionMenu = lazy(() => import('./components/FloatingActionMenu'));
+const Team = lazy(() => import('./components/ui/team'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -128,14 +130,21 @@ function App() {
         <About config={config} />
         <Theme config={config} />
 
-        <Speakers config={config} />
-        <Experience config={config} />
-        <Timeline config={config} />
-        <Sponsors config={config} />
-        <Team />
-        <Footer />
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <Speakers config={config} />
+          <Experience config={config} />
+          <Timeline config={config} />
+          <Sponsors config={config} />
+          <Team />
+          <Footer />
+        </Suspense>
       </div>
-      {!loading && <FloatingWelcomeOrb />}
+      {!loading && (
+        <Suspense fallback={null}>
+          <StageMic />
+          <FloatingActionMenu />
+        </Suspense>
+      )}
     </>
   );
 }

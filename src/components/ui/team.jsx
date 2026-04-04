@@ -61,6 +61,7 @@ export default function Team() {
             <div key={member.name} className="group flex w-full flex-col items-center">
               <div className="relative aspect-[3/4] h-auto w-full max-w-[20rem] sm:max-w-none overflow-hidden rounded-2xl border border-white/10 bg-pure-black">
                 <img
+                  loading="lazy"
                   alt={member.name}
                   className="h-full w-full object-cover grayscale-0 lg:grayscale transition-all duration-300 lg:group-hover:grayscale-0"
                   loading="lazy"
