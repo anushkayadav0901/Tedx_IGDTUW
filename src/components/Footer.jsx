@@ -40,18 +40,18 @@ const Footer = memo(() => {
           </div>
 
           <div className="flex flex-wrap justify-center md:justify-end gap-5 sm:gap-6">
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-ted-red transition-colors text-2xl cursor-hover">
+            {/* <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-ted-red transition-colors text-2xl cursor-hover">
               <span>𝕏</span>
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-ted-red transition-colors text-2xl cursor-hover">
+            </a> */}
+            <a href="https://www.linkedin.com/company/tedxigdtuw/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-ted-red transition-colors text-2xl cursor-hover">
               <span>in</span>
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-ted-red transition-colors text-2xl cursor-hover">
+            <a href="https://www.instagram.com/tedx_igdtu/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-ted-red transition-colors text-2xl cursor-hover">
               <span>IG</span>
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-ted-red transition-colors text-2xl cursor-hover">
+            {/* <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-white hover:text-ted-red transition-colors text-2xl cursor-hover">
               <span>YT</span>
-            </a>
+            </a> */}
           </div>
         </div>
 
