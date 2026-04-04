@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import { UserStar } from 'lucide-react';
 
 const teamMembers = [
@@ -35,11 +35,6 @@ const teamMembers = [
 ];
 
 export default function Team() {
-  const [marqueePaused, setMarqueePaused] = useState(false);
-  const toggleMarquee = useCallback(() => {
-    setMarqueePaused((p) => !p);
-  }, []);
-
   return (
     <section id="team" className="relative w-full overflow-hidden border-t border-white/10 bg-pure-black py-12 md:py-20 lg:py-24">
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
@@ -64,7 +59,6 @@ export default function Team() {
                   loading="lazy"
                   alt={member.name}
                   className="h-full w-full object-cover grayscale-0 lg:grayscale transition-all duration-300 lg:group-hover:grayscale-0"
-                  loading="lazy"
                   src={member.image}
                 />
                 <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-5 pt-12">
