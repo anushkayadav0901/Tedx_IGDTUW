@@ -17,65 +17,110 @@ const Theme = memo(({ config }) => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      if (config.enableSplitText && config.enableHeavyAnimations) {
-        // Split text animation for desktop
+      if (config?.enableSplitText && config?.enableHeavyAnimations) {
+        // Split text animation for desktop - repeats on scroll
         const beyondSplit = new SplitType(beyondRef.current, { types: ['chars'] });
         const barriersSplit = new SplitType(barriersRef.current, { types: ['chars'] });
 
         gsap.from(beyondSplit.chars, {
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 70%',
-            toggleActions: 'play none none none'
+            start: 'top 75%',
+            end: 'top 25%',
+            toggleActions: 'play reverse play reverse',
+            scrub: 1
           },
           x: -100,
           opacity: 0,
-          stagger: 0.02,
-          duration: 0.8,
-          ease: 'power2.out'
+          stagger: 0.02
         });
 
         gsap.from(barriersSplit.chars, {
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 70%',
-            toggleActions: 'play none none none'
+            start: 'top 75%',
+            end: 'top 25%',
+            toggleActions: 'play reverse play reverse',
+            scrub: 1
           },
           x: 100,
           opacity: 0,
-          stagger: 0.02,
-          duration: 0.8,
-          ease: 'power2.out'
+          stagger: 0.02
         });
       } else {
-        // Simple fade for mobile/low-end
-        gsap.from([beyondRef.current, barriersRef.current], {
+        // Parallax animation for mobile/low-end - repeats on scroll
+        gsap.from(beyondRef.current, {
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 70%',
-            end: 'top 40%',
-            scrub: 1
+            start: 'top 80%',
+            end: 'top 20%',
+            scrub: 1.5,
+            toggleActions: 'play reverse play reverse'
           },
-          opacity: 0,
-          y: 50
+          x: -80,
+          opacity: 0
+        });
+
+        gsap.from(barriersRef.current, {
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            end: 'top 20%',
+            scrub: 1.5,
+            toggleActions: 'play reverse play reverse'
+          },
+          x: 80,
+          opacity: 0
         });
       }
 
-      // Batch remaining animations
-      const elements = [subtitleRef.current, line1Ref.current, line2Ref.current, descRef.current];
-
-      ScrollTrigger.batch(elements, {
-        start: 'top 80%',
-        onEnter: (batch) => {
-          gsap.from(batch, {
-            opacity: 0,
-            y: 30,
-            stagger: 0.1,
-            duration: 0.8,
-            ease: 'power3.out'
-          });
+      // Parallax for subtitle and lines - repeats on scroll
+      gsap.from(subtitleRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 70%',
+          end: 'top 30%',
+          scrub: 1,
+          toggleActions: 'play reverse play reverse'
         },
-        once: true
+        opacity: 0,
+        y: 40
+      });
+
+      gsap.from(line1Ref.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 75%',
+          end: 'top 35%',
+          scrub: 1,
+          toggleActions: 'play reverse play reverse'
+        },
+        scaleX: 0,
+        opacity: 0
+      });
+
+      gsap.from(line2Ref.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 65%',
+          end: 'top 25%',
+          scrub: 1,
+          toggleActions: 'play reverse play reverse'
+        },
+        scaleX: 0,
+        opacity: 0
+      });
+
+      gsap.from(descRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 60%',
+          end: 'top 20%',
+          scrub: 1,
+          toggleActions: 'play reverse play reverse'
+        },
+        opacity: 0,
+        y: 50
       });
     }, sectionRef);
 

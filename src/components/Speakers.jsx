@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, memo, useState, useCallback } from 'react';
+import React, { useEffect, useRef, memo, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -173,8 +173,6 @@ const Speakers = memo(({ config = { enableHeavyAnimations: true } }) => {
           `}</style>
 
           {pastSpeakers.map((speaker, index) => {
-            const isDesktopHovered = hoveredCardIndex === index;
-            const isDesktopAnotherHovered = hoveredCardIndex !== null && hoveredCardIndex !== index;
             const isMobileActive = activeMobileCard === index;
 
             return (
@@ -195,7 +193,7 @@ const Speakers = memo(({ config = { enableHeavyAnimations: true } }) => {
                   md:scale-100 md:opacity-100 md:translate-y-0 md:shadow-none md:border-white/5 md:blur-0
                   
                   md:hover:-translate-y-4 md:hover:scale-[1.04] md:hover:shadow-[0_20px_50px_rgba(230,43,30,0.3)] md:hover:border-ted-red/40 md:hover:z-30
-                  ${isDesktopAnotherHovered ? 'md:!scale-[0.93] md:!opacity-40 md:!blur-[3px] md:!z-0' : ''}
+                  ${hoveredCardIndex !== null && hoveredCardIndex !== index ? 'md:!scale-[0.93] md:!opacity-40 md:!blur-[3px] md:!z-0' : ''}
                 `}
               >
                 <div
