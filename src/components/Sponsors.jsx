@@ -72,7 +72,7 @@ const Sponsors = memo(() => {
             <div
               key={sponsor.name}
               ref={el => cardsRef.current[index] = el}
-              className="card-premium group cursor-hover min-h-[10rem] sm:min-h-[12rem] md:min-h-[14rem] py-6 sm:py-8 px-6 sm:px-8 flex items-center justify-center grayscale-0 lg:grayscale lg:hover:grayscale-0 hover:scale-[1.02] transition-all duration-300 ease-out"
+              className="card-premium group cursor-hover min-h-[10rem] sm:min-h-[12rem] md:min-h-[14rem] py-6 sm:py-8 px-6 sm:px-8 flex items-center justify-center hover:scale-[1.02] transition-all duration-300 ease-out bg-white/5"
             >
               <img
                 src={sponsor.image}
@@ -82,7 +82,7 @@ const Sponsors = memo(() => {
                   console.error(`Failed to load image for ${sponsor.name}:`, e.target.src);
                   e.target.style.border = '2px solid red';
                 }}
-                className="w-full h-full object-contain mx-auto transition-transform duration-300 group-hover:scale-110"
+                className="w-full h-full object-contain mx-auto transition-transform duration-300 group-hover:scale-110 brightness-110 contrast-110 saturate-150"
                 draggable={false}
               />
             </div>

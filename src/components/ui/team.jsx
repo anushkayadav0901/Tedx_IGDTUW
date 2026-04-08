@@ -1,22 +1,51 @@
 import React from 'react';
 import { UserStar } from 'lucide-react';
 
-// Import images
-import shivaniImage from '../../assets/Shivani-prezi.jpeg';
-import snehaImage from '../../assets/Sneha-prezi.jpeg';
+// Import all director images
+import anousha from '../../assets/directors/Anousha.jpeg';
+import ayushiDel from '../../assets/directors/Ayushi-del.jpeg';
+import ayushi from '../../assets/directors/Ayushi.jpeg';
+import harshita from '../../assets/directors/Harshita.jpeg';
+import kanak from '../../assets/directors/Kanak.jpeg';
+import manishika from '../../assets/directors/Manishika.jpeg';
+import parnika from '../../assets/directors/Parnika.jpeg';
+import pratistha from '../../assets/directors/Pratistha.jpeg';
+import raksha from '../../assets/directors/Raksha.jpeg';
+import shivaniPrezi from '../../assets/directors/Shivani-prezi.jpeg';
+import shivya from '../../assets/directors/Shivya.jpeg';
+import shreya from '../../assets/directors/Shreya.jpeg';
+import snehaPrezi from '../../assets/directors/Sneha-prezi.jpeg';
+import vamika from '../../assets/directors/Vamika.jpeg';
 
-const teamMembers = [
-  {
-    image: shivaniImage,
-    name: 'Shivani Jha',
-    role: 'President',
-  },
-  {
-    image: snehaImage,
-    name: 'Sneha',
-    role: 'President',
-  },
+// Map images with their filenames
+const directorsData = [
+  { image: anousha, filename: 'Anousha.jpeg' },
+  { image: ayushiDel, filename: 'Ayushi-del.jpeg' },
+  { image: ayushi, filename: 'Ayushi.jpeg' },
+  { image: harshita, filename: 'Harshita.jpeg' },
+  { image: kanak, filename: 'Kanak.jpeg' },
+  { image: manishika, filename: 'Manishika.jpeg' },
+  { image: parnika, filename: 'Parnika.jpeg' },
+  { image: pratistha, filename: 'Pratistha.jpeg' },
+  { image: raksha, filename: 'Raksha.jpeg' },
+  { image: shivaniPrezi, filename: 'Shivani-prezi.jpeg' },
+  { image: shivya, filename: 'Shivya.jpeg' },
+  { image: shreya, filename: 'Shreya.jpeg' },
+  { image: snehaPrezi, filename: 'Sneha-prezi.jpeg' },
+  { image: vamika, filename: 'Vamika.jpeg' },
 ];
+
+// Helper function to extract and format name from filename
+const getNameFromFilename = (filename) => {
+  // Remove extension
+  const nameWithoutExt = filename.replace(/\.(jpeg|jpg|png)$/i, '');
+  // Replace hyphens and underscores with spaces
+  const formattedName = nameWithoutExt.replace(/[-_]/g, ' ');
+  return formattedName;
+};
+
+// Check if filename contains "prezi"
+const isPrezi = (filename) => filename.toLowerCase().includes('prezi');
 
 export default function Team() {
   return (
@@ -35,27 +64,32 @@ export default function Team() {
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mx-auto w-full max-w-3xl">
-          {teamMembers.map((member) => (
-            <div key={member.name} className="group flex w-full flex-col items-center">
-              <div className="relative aspect-[3/4] h-auto w-full max-w-[20rem] sm:max-w-none overflow-hidden rounded-2xl border border-white/10 bg-pure-black">
-                <img
-                  loading="lazy"
-                  alt={member.name}
-                  className="h-full w-full object-cover grayscale-0 lg:grayscale transition-all duration-300 lg:group-hover:grayscale-0"
-                  src={member.image}
-                />
-                <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-5 pt-12">
-                  <h3 className="font-semibold text-lg text-white mb-1">{member.name}</h3>
-                  <div className="w-8 h-0.5 bg-ted-red mb-2 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <p className="text-white/80 text-sm tracking-wide">{member.role}</p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6 mx-auto w-full">
+          {directorsData.map((director, index) => {
+            const showName = isPrezi(director.filename);
+            const displayName = showName ? getNameFromFilename(director.filename) : '';
+
+            return (
+              <div key={index} className="group flex w-full flex-col items-center">
+                <div className="relative aspect-[3/4] h-auto w-full overflow-hidden rounded-2xl border border-white/10 bg-pure-black">
+                  <img
+                    loading="lazy"
+                    alt={displayName || 'Team member'}
+                    className="h-full w-full object-cover transition-all duration-300"
+                    src={director.image}
+                  />
+                  {showName && (
+                    <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent p-4 pt-10">
+                      <h3 className="font-semibold text-base text-white mb-1">{displayName}</h3>
+                      <div className="w-8 h-0.5 bg-ted-red"></div>
+                    </div>
+                  )}
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
   );
 }
-
