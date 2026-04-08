@@ -428,13 +428,15 @@ const Hero = memo(({ config = {} }) => {
               </div>
               <div className="hero-cta-glow-wrap relative">
                 <span className="hero-cta-halo hero-cta-halo--outline" aria-hidden="true" />
-                <button
-                  type="button"
-                  className="magnetic-btn btn-secondary-outline hero-cta-btn rounded-none w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-lg tracking-wide cursor-hover opacity-0"
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLSeEsqlZ6jA3YaawJChTyghzlKxU2BIc44-bF_CwcdS3mCx1Gw/viewform"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="magnetic-btn btn-secondary-outline hero-cta-btn rounded-none w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 text-sm sm:text-lg tracking-wide cursor-hover opacity-0 inline-block text-center"
                   aria-label="Get tickets for TEDxIGDTU"
                 >
                   <span className="magnetic-btn__label">GET TICKETS</span>
-                </button>
+                </a>
               </div>
             </div>
           </div>

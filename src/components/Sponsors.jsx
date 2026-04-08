@@ -6,6 +6,7 @@ import s1 from '../assets/4700BC.jpeg';
 import s2 from '../assets/MCD.avif';
 import s3 from '../assets/Piclelo.avif';
 import s4 from '../assets/TCP.png';
+import s5 from '../assets/champion.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +15,7 @@ const sponsors = [
   { name: 'MCD', image: s2 },
   { name: 'Piclelo', image: s3 },
   { name: 'TCP', image: s4 },
+  { name: 'Champion', image: s5 },
 ];
 
 const Sponsors = memo(() => {
@@ -65,17 +67,22 @@ const Sponsors = memo(() => {
           Our <span className="text-ted-red">Partners</span>
         </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
           {sponsors.map((sponsor, index) => (
             <div
               key={sponsor.name}
               ref={el => cardsRef.current[index] = el}
-              className="card-premium group cursor-hover min-h-[6rem] sm:h-32 py-4 sm:py-6 px-4 flex items-center justify-center grayscale-0 lg:grayscale lg:hover:grayscale-0 hover:scale-105 transition-all duration-300 ease-out"
+              className="card-premium group cursor-hover min-h-[10rem] sm:min-h-[12rem] md:min-h-[14rem] py-6 sm:py-8 px-6 sm:px-8 flex items-center justify-center grayscale-0 lg:grayscale lg:hover:grayscale-0 hover:scale-[1.02] transition-all duration-300 ease-out"
             >
               <img
                 src={sponsor.image}
                 alt={sponsor.name}
-                className="max-h-12 object-contain mx-auto"
+                loading="eager"
+                onError={(e) => {
+                  console.error(`Failed to load image for ${sponsor.name}:`, e.target.src);
+                  e.target.style.border = '2px solid red';
+                }}
+                className="w-full h-full object-contain mx-auto transition-transform duration-300 group-hover:scale-110"
                 draggable={false}
               />
             </div>
