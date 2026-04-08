@@ -9,6 +9,8 @@ import CustomCursor from './components/CustomCursor';
 import Hero from './components/Hero';
 import About from './components/About';
 import Theme from './components/Theme';
+import ScrollProgress from './components/ScrollProgress';
+import EnhancedCursor from './components/EnhancedCursor';
 
 // Lazy load below-the-fold components
 const Speakers26 = lazy(() => import('./components/Speakers26'));
@@ -124,6 +126,8 @@ function App() {
     <>
       {loading && <RedVelvetCurtainLoader onComplete={() => setLoading(false)} />}
       {config.enableCustomCursor && <CustomCursor />}
+      {config.enableCustomCursor && <EnhancedCursor />}
+      {!loading && <ScrollProgress />}
       {!loading && <Navbar />}
       <div
         className={`bg-pure-black min-h-screen w-full max-w-full overflow-x-hidden ${config.enableCustomCursor ? 'cursor-none' : ''}`}

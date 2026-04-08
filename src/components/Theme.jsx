@@ -131,7 +131,7 @@ const Theme = memo(({ config }) => {
     <section
       id="theme"
       ref={sectionRef}
-      className="relative scroll-mt-24 md:scroll-mt-28 py-12 md:py-20 lg:py-24 px-4 sm:px-6 border-t border-white/10 overflow-hidden"
+      className="relative scroll-mt-24 md:scroll-mt-28 py-12 md:py-20 lg:py-24 px-4 sm:px-6 border-t border-white/10 overflow-hidden gradient-animate"
     >
       <div className="max-w-4xl mx-auto w-full min-w-0 text-center relative z-10 px-1">
         <div className="mb-4 max-md:mb-3 sm:mb-6">
@@ -143,14 +143,16 @@ const Theme = memo(({ config }) => {
 
         <div ref={line1Ref} className="w-24 sm:w-32 h-0.5 bg-ted-red mx-auto mb-4 max-md:mb-3 sm:mb-6"></div>
 
-        <p ref={subtitleRef} className="text-[clamp(1.25rem,3vw+0.5rem,1.875rem)] font-light mb-6 md:mb-10 text-white/90 px-2 animate-fade-in">
+        <p ref={subtitleRef} className="text-[clamp(1.25rem,3vw+0.5rem,1.875rem)] font-light mb-6 md:mb-10 text-white/90 px-2 animate-fade-in text-shimmer">
           Who Shapes the Future?
         </p>
 
         <div ref={line2Ref} className="w-20 sm:w-24 h-0.5 bg-ted-red mx-auto mb-6 md:mb-10"></div>
 
-        <div className="card-premium cursor-hover w-full mx-auto mb-8 md:mb-12 relative overflow-hidden flex items-center justify-center">
-          <img src={retroImage} loading="lazy" className="block w-full h-auto object-contain rounded-[inherit]" alt="TEDx Theme" />
+        <div className="card-premium card-tilt hover-glow cursor-hover w-full mx-auto mb-8 md:mb-12 relative overflow-hidden flex items-center justify-center">
+          <div className="card-tilt-inner">
+            <img src={retroImage} loading="lazy" className="block w-full h-auto object-contain rounded-[inherit]" alt="TEDx Theme" />
+          </div>
         </div>
 
         <p ref={descRef} className="text-base sm:text-lg text-white/80 leading-snug sm:leading-relaxed max-w-2xl mx-auto">
