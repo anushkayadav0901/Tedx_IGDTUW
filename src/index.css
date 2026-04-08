@@ -462,6 +462,265 @@ a:hover::after {
     }
   }
 
+  /* ── SPEAKER DECK ── */
+  .speaker-deck-section {
+    perspective: 1200px;
+    perspective-origin: 50% 50%;
+  }
+
+  .speaker-deck-wrapper {
+    position: relative;
+    width: 340px;
+    height: 480px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+  }
+
+  @media (min-width: 480px) {
+    .speaker-deck-wrapper {
+      width: 380px;
+      height: 520px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .speaker-deck-wrapper {
+      width: 400px;
+      height: 540px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .speaker-deck-wrapper {
+      width: 420px;
+      height: 560px;
+    }
+  }
+
+  .speaker-deck-card {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transform-origin: center center;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform, opacity, filter;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: none;
+  }
+
+  .speaker-deck-card--active {
+    pointer-events: auto;
+  }
+
+  .speaker-deck-card--active {
+    border-color: rgba(255, 0, 0, 0.2);
+    box-shadow:
+      0 0 80px rgba(255, 0, 0, 0.15),
+      0 25px 70px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(255, 0, 0, 0.1);
+  }
+
+  .speaker-deck-card__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .speaker-deck-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.92) 0%,
+      rgba(0, 0, 0, 0.5) 35%,
+      rgba(0, 0, 0, 0.1) 60%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  .speaker-deck-card__info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 28px 24px;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 400ms ease, transform 400ms ease;
+  }
+
+  .speaker-deck-card--active .speaker-deck-card__info {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .speaker-deck-card__name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .speaker-deck-card__rule {
+    width: 48px;
+    height: 3px;
+    background: var(--ted-accent);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.35);
+  }
+
+  .speaker-deck-card__focus {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 500ms cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 400ms ease;
+  }
+
+  .speaker-deck-card--active .speaker-deck-card__focus {
+    max-height: 80px;
+    opacity: 1;
+  }
+
+  /* ── Deck navigation arrows ── */
+  .speaker-deck-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 60;
+  }
+
+  .speaker-deck-nav--left {
+    left: -72px;
+  }
+
+  .speaker-deck-nav--right {
+    right: -72px;
+  }
+
+  @media (max-width: 767px) {
+    .speaker-deck-nav--left {
+      left: -16px;
+    }
+    .speaker-deck-nav--right {
+      right: -16px;
+    }
+  }
+
+  .speaker-deck-nav-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transform-origin: center center;
+    transition:
+      background 250ms var(--ease-premium),
+      border-color 250ms var(--ease-premium),
+      box-shadow 250ms var(--ease-premium),
+      color 250ms var(--ease-premium),
+      transform 150ms var(--ease-premium);
+  }
+
+  .speaker-deck-nav-btn:hover {
+    background: rgba(255, 0, 0, 0.12);
+    border-color: rgba(255, 0, 0, 0.35);
+    box-shadow: 0 0 28px rgba(255, 0, 0, 0.18);
+    color: #ffffff;
+    transform: scale(1.08);
+  }
+
+  .speaker-deck-nav-btn:active {
+    transform: scale(0.94);
+    box-shadow: 0 0 16px rgba(255, 0, 0, 0.3);
+  }
+
+  @media (max-width: 767px) {
+    .speaker-deck-nav-btn {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  /* ── Deck dot indicators ── */
+  .speaker-deck-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 36px;
+  }
+
+  .speaker-deck-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+      background 300ms ease,
+      transform 300ms ease,
+      box-shadow 300ms ease;
+  }
+
+  .speaker-deck-dot--active {
+    background: var(--ted-accent);
+    transform: scale(1.4);
+    box-shadow: 0 0 14px rgba(255, 0, 0, 0.5);
+  }
+
+  .speaker-deck-dot:hover:not(.speaker-deck-dot--active) {
+    background: rgba(255, 255, 255, 0.45);
+    transform: scale(1.15);
+  }
+
+  /* ── Card counter badge ── */
+  .speaker-deck-counter {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.08em;
+    text-align: center;
+    margin-top: 14px;
+  }
+
+  .speaker-deck-counter span {
+    color: var(--ted-accent);
+    font-weight: 600;
+  }
+
   /* Magnetic CTAs: GSAP moves the button; label scales on press (no layout shift) */
   .magnetic-btn {
     position: relative;
