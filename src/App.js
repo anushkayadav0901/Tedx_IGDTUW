@@ -11,6 +11,7 @@ import About from './components/About';
 import Theme from './components/Theme';
 
 // Lazy load below-the-fold components
+const Speakers26 = lazy(() => import('./components/Speakers26'));
 const Speakers = lazy(() => import('./components/Speakers'));
 const Experience = lazy(() => import('./components/Experience'));
 const Timeline = lazy(() => import('./components/Timeline'));
@@ -132,6 +133,7 @@ function App() {
         <Theme config={config} />
 
         <Suspense fallback={<div className="min-h-screen" />}>
+          <Speakers26 config={config} />
           <Speakers config={config} />
           <Experience config={config} />
           <Timeline config={config} />
