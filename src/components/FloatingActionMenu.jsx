@@ -27,8 +27,8 @@ const ACTIONS = [
         <path d="M13 5v2" /><path d="M13 17v2" /><path d="M13 11v2" />
       </svg>
     ),
-    action: 'scroll',
-    target: 'hero',
+    action: 'url',
+    target: 'https://docs.google.com/forms/d/e/1FAIpQLSeEsqlZ6jA3YaawJChTyghzlKxU2BIc44-bF_CwcdS3mCx1Gw/viewform',
   },
   {
     id: 'fab-speakers',

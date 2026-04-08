@@ -2,15 +2,18 @@ import React, { useEffect, useRef, memo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import s1 from '../assets/4700BC.jpeg';
+import s2 from '../assets/MCD.avif';
+import s3 from '../assets/Piclelo.avif';
+import s4 from '../assets/TCP.png';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const sponsors = [
-  { name: 'Sponsor 1', tier: 'platinum' },
-  { name: 'Sponsor 2', tier: 'platinum' },
-  { name: 'Sponsor 3', tier: 'gold' },
-  { name: 'Sponsor 4', tier: 'gold' },
-  { name: 'Sponsor 5', tier: 'silver' },
-  { name: 'Sponsor 6', tier: 'silver' },
+  { name: '4700BC', image: s1 },
+  { name: 'MCD', image: s2 },
+  { name: 'Piclelo', image: s3 },
+  { name: 'TCP', image: s4 },
 ];
 
 const Sponsors = memo(() => {
@@ -62,14 +65,19 @@ const Sponsors = memo(() => {
           Our <span className="text-ted-red">Partners</span>
         </h2>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
           {sponsors.map((sponsor, index) => (
             <div
-              key={index}
+              key={sponsor.name}
               ref={el => cardsRef.current[index] = el}
-              className="card-premium group cursor-hover min-h-[6rem] sm:h-32 py-4 sm:py-6 px-3 flex items-center justify-center grayscale-0 lg:grayscale lg:hover:grayscale-0 transition-all duration-[250ms] ease-out"
+              className="card-premium group cursor-hover min-h-[6rem] sm:h-32 py-4 sm:py-6 px-4 flex items-center justify-center grayscale-0 lg:grayscale lg:hover:grayscale-0 hover:scale-105 transition-all duration-300 ease-out"
             >
-              <p className="text-white/80 lg:text-white/40 text-xs sm:text-sm lg:group-hover:text-white/90 transition-colors duration-[250ms] ease-out text-center">{sponsor.name}</p>
+              <img
+                src={sponsor.image}
+                alt={sponsor.name}
+                className="max-h-12 object-contain mx-auto"
+                draggable={false}
+              />
             </div>
           ))}
         </div>
