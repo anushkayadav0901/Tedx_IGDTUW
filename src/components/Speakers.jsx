@@ -47,6 +47,7 @@ const getCardStyle = (offset, total) => {
   const sign = offset >= 0 ? 1 : -1;
 
   if (absOffset === 0) {
+    // Active card — fully clear, no blur, no opacity reduction
     return {
       scale: 1,
       x: 0,
@@ -59,11 +60,11 @@ const getCardStyle = (offset, total) => {
     };
   }
 
-  // Cards behind fan out with diminishing offsets
+  // Background cards — stay opaque (no see-through), de-emphasis via scrim + blur
   const configs = [
     null, // index 0 handled above
-    { scale: 0.92, x: 55 * sign, y: 10, rotateY: -4 * sign, rotateZ: 1.5 * sign, opacity: 0.55, blur: 1.5, z: 40 },
-    { scale: 0.85, x: 100 * sign, y: 18, rotateY: -7 * sign, rotateZ: 2.5 * sign, opacity: 0.35, blur: 3, z: 30 },
+    { scale: 0.88, x: 65 * sign, y: 14, rotateY: -4 * sign, rotateZ: 2 * sign, blur: 2, z: 40 },
+    { scale: 0.78, x: 120 * sign, y: 26, rotateY: -7 * sign, rotateZ: 3 * sign, blur: 4, z: 30 },
   ];
 
   if (absOffset <= 2) {
@@ -74,21 +75,21 @@ const getCardStyle = (offset, total) => {
       y: c.y,
       rotateY: c.rotateY,
       rotateZ: c.rotateZ,
-      opacity: c.opacity,
+      opacity: 1,  // Keep opaque so cards don't show through each other
       filter: `blur(${c.blur}px)`,
       zIndex: c.z,
     };
   }
 
-  // Further back cards (hidden)
+  // Further back cards — fully hidden
   return {
-    scale: 0.78,
-    x: 130 * sign,
-    y: 24,
+    scale: 0.75,
+    x: 150 * sign,
+    y: 28,
     rotateY: -9 * sign,
     rotateZ: 3 * sign,
     opacity: 0,
-    filter: 'blur(6px)',
+    filter: 'blur(8px)',
     zIndex: 10,
   };
 };
@@ -417,8 +418,15 @@ const Speakers = memo(({ config = { enableHeavyAnimations: true } }) => {
                     />
                   )}
 
-                  {/* Gradient Overlay */}
-                  <div className="speaker-deck-card__overlay" />
+                  {/* Gradient overlay — only on active card for name readability */}
+                  {isActive && (
+                    <div className="speaker-deck-card__overlay" />
+                  )}
+
+                  {/* Dark scrim on inactive cards for depth */}
+                  {!isActive && (
+                    <div className="speaker-deck-card__scrim" />
+                  )}
 
                   {/* Speaker Info */}
                   <div className="speaker-deck-card__info">

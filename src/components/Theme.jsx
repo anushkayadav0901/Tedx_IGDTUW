@@ -149,8 +149,8 @@ const Theme = memo(({ config }) => {
 
         <div ref={line2Ref} className="w-20 sm:w-24 h-0.5 bg-ted-red mx-auto mb-6 md:mb-10"></div>
 
-        <div className="card-premium cursor-hover w-full max-w-full mb-8 md:mb-12 relative overflow-hidden mx-auto">
-          <img src={retroImage} loading="lazy" className="block w-full h-auto object-cover" alt="TEDx Theme" />
+        <div className="card-premium cursor-hover w-full mx-auto mb-8 md:mb-12 relative overflow-hidden flex items-center justify-center">
+          <img src={retroImage} loading="lazy" className="block w-full h-auto object-contain rounded-[inherit]" alt="TEDx Theme" />
         </div>
 
         <p ref={descRef} className="text-base sm:text-lg text-white/80 leading-snug sm:leading-relaxed max-w-2xl mx-auto">

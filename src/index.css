@@ -473,7 +473,6 @@ a:hover::after {
     width: 340px;
     height: 480px;
     margin: 0 auto;
-    transform-style: preserve-3d;
   }
 
   @media (min-width: 480px) {
@@ -502,12 +501,12 @@ a:hover::after {
     inset: 0;
     border-radius: 20px;
     overflow: hidden;
-    background: #0a0a0a;
+    background: #000000;
     border: 1px solid rgba(255, 255, 255, 0.06);
     transform-origin: center center;
-    transform-style: preserve-3d;
     backface-visibility: hidden;
     will-change: transform, opacity, filter;
+    isolation: isolate;
     cursor: pointer;
     user-select: none;
     -webkit-user-select: none;
@@ -516,9 +515,6 @@ a:hover::after {
 
   .speaker-deck-card--active {
     pointer-events: auto;
-  }
-
-  .speaker-deck-card--active {
     border-color: rgba(255, 0, 0, 0.2);
     box-shadow:
       0 0 80px rgba(255, 0, 0, 0.15),
@@ -540,12 +536,21 @@ a:hover::after {
     inset: 0;
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.92) 0%,
-      rgba(0, 0, 0, 0.5) 35%,
-      rgba(0, 0, 0, 0.1) 60%,
-      transparent 100%
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.25) 30%,
+      transparent 55%
     );
     pointer-events: none;
+    transition: opacity 400ms ease;
+  }
+
+  /* Dark scrim for inactive/background cards */
+  .speaker-deck-card__scrim {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    pointer-events: none;
+    transition: opacity 400ms ease;
   }
 
   .speaker-deck-card__info {
