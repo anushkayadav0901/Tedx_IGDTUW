@@ -189,7 +189,6 @@ const Speakers = memo(({ config = { enableHeavyAnimations: true } }) => {
   // ── Jump to a specific card (dot click) ──
   const jumpTo = useCallback((targetIndex) => {
     if (isAnimating || targetIndex === activeIndex) return;
-    const direction = targetIndex > activeIndex ? 'right' : 'left';
     setIsAnimating(true);
 
     setActiveIndex(targetIndex);
