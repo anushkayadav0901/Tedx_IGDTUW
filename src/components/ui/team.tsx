@@ -66,8 +66,8 @@ export default function Team() {
             <UserStar size={22} />
           </div>
 
-          <h2 className="relative mb-3 text-[clamp(2rem,5vw+1rem,3.75rem)] font-bold tracking-tight text-white sm:text-6xl px-2">
-            The <span className="text-ted-red">Team</span>
+          <h2 className="relative mb-3 text-[clamp(2rem,5vw+1rem,3.75rem)] font-bold tracking-tight text-white sm:text-6xl px-2 animate-text-glow">
+            The <span className="text-ted-red drop-shadow-[0_0_20px_rgba(229,9,20,0.8)] animate-text-glow-red">Team</span>
           </h2>
           <h3 className="mb-5 sm:mb-8 text-[clamp(1.125rem,3vw+0.5rem,1.875rem)] font-light text-white/80 px-2 leading-snug">
             Meet the leaders behind TEDxIGDTU

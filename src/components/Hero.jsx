@@ -380,9 +380,9 @@ const Hero = memo(({ config = {} }) => {
             <h1
               ref={titleRef}
               style={{ fontFamily: 'Times New Roman, serif' }}
-              className="hero-title-text font-extrabold font-serif tracking-wide mb-3 sm:mb-6 text-[clamp(2.25rem,10vw+1rem,8rem)] md:leading-[1.05] leading-tight break-words text-balance px-1 sm:px-0 hero-text-glow"
+              className="hero-title-text font-extrabold font-serif tracking-wide mb-3 sm:mb-6 text-[clamp(2.25rem,10vw+1rem,8rem)] md:leading-[1.05] leading-tight break-words text-balance px-1 sm:px-0 hero-text-glow animate-pulse-glow"
             >
-              TEDx<span className="text-ted-red">IGDTU</span>
+              TEDx<span className="text-ted-red drop-shadow-[0_0_20px_rgba(229,9,20,0.8)]">IGDTU</span>
             </h1>
 
             <div className="flex justify-center mb-4 sm:mb-8 hero-title-rule">
@@ -392,7 +392,7 @@ const Hero = memo(({ config = {} }) => {
             <div className="max-w-5xl mx-auto w-full px-2">
               <h2
                 ref={subtitleRef}
-                className="font-light mb-6 sm:mb-12 tracking-wide text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-[2.25rem] leading-tight text-center whitespace-nowrap overflow-hidden text-ellipsis hero-text-glow hero-subtitle-mobile"
+                className="font-light mb-6 sm:mb-12 tracking-wide text-base sm:text-lg md:text-2xl lg:text-3xl xl:text-[2.25rem] leading-tight text-center whitespace-normal sm:whitespace-nowrap overflow-visible text-balance hero-text-glow hero-subtitle-mobile animate-text-glow"
               >
                 Beyond Barriers: Who Shapes the Future?
               </h2>

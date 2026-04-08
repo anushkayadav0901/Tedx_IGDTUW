@@ -60,35 +60,51 @@ const Sponsors = memo(() => {
     <section
       id="partners"
       ref={sectionRef}
-      className="scroll-mt-24 md:scroll-mt-28 py-12 md:py-20 lg:py-24 px-4 sm:px-6 border-t border-white/10"
+      className="scroll-mt-24 md:scroll-mt-28 py-16 md:py-24 lg:py-32 px-4 sm:px-6 border-t border-white/10 bg-gradient-to-b from-pure-black via-pure-black to-pure-black/95"
     >
       <div className="max-w-7xl mx-auto w-full min-w-0">
-        <h2 ref={titleRef} className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-8 md:mb-12 text-center px-2">
-          Our <span className="text-ted-red">Partners</span>
+        <h2 ref={titleRef} className="text-[clamp(2rem,5vw+1rem,3.75rem)] md:text-6xl font-bold mb-4 text-center px-2 animate-text-glow">
+          Our <span className="text-ted-red drop-shadow-[0_0_20px_rgba(229,9,20,0.8)] animate-text-glow-red">Partners</span>
         </h2>
+        <p className="text-center text-white/60 mb-12 md:mb-16 text-sm sm:text-base">
+          Built with incredible partners
+        </p>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
+        <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-10 lg:gap-12 px-2">
           {sponsors.map((sponsor, index) => (
             <div
               key={sponsor.name}
               ref={el => cardsRef.current[index] = el}
-              className="card-premium group cursor-hover min-h-[10rem] sm:min-h-[12rem] md:min-h-[14rem] py-6 sm:py-8 px-6 sm:px-8 flex items-center justify-center hover:scale-[1.02] transition-all duration-300 ease-out bg-white/5"
+              className="group relative"
+              style={{
+                animation: `float ${3 + index * 0.5}s ease-in-out infinite`,
+                animationDelay: `${index * 0.2}s`
+              }}
             >
-              <img
-                src={sponsor.image}
-                alt={sponsor.name}
-                loading="eager"
-                onError={(e) => {
-                  console.error(`Failed to load image for ${sponsor.name}:`, e.target.src);
-                  e.target.style.border = '2px solid red';
-                }}
-                className="w-full h-full object-contain mx-auto transition-transform duration-300 group-hover:scale-110 brightness-110 contrast-110 saturate-150"
-                draggable={false}
-              />
+              <div className="relative w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 p-5 sm:p-6 md:p-7 flex items-center justify-center rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 transition-all duration-500 ease-out group-hover:bg-white/10 group-hover:border-white/30 group-hover:scale-110 group-hover:shadow-[0_0_40px_rgba(229,9,20,0.3)]">
+                <img
+                  src={sponsor.image}
+                  alt={sponsor.name}
+                  loading="eager"
+                  className="w-full h-full object-contain filter brightness-110 contrast-110 saturate-150 transition-all duration-500 group-hover:brightness-125 group-hover:scale-105"
+                  draggable={false}
+                />
+              </div>
             </div>
           ))}
         </div>
       </div>
+
+      <style>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+      `}</style>
     </section>
   );
 });

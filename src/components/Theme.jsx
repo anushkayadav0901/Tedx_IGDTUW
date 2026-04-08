@@ -136,14 +136,14 @@ const Theme = memo(({ config }) => {
       <div className="max-w-4xl mx-auto w-full min-w-0 text-center relative z-10 px-1">
         <div className="mb-4 max-md:mb-3 sm:mb-6">
           <h2 className="font-bold tracking-tight flex flex-wrap justify-center gap-x-2 sm:gap-x-3 gap-y-1 text-[clamp(2.5rem,8vw+0.5rem,6rem)] leading-tight">
-            <span ref={beyondRef}>BEYOND </span>
-            <span ref={barriersRef} className="text-ted-red">BARRIERS</span>
+            <span ref={beyondRef} className="animate-text-glow">BEYOND </span>
+            <span ref={barriersRef} className="text-ted-red drop-shadow-[0_0_25px_rgba(229,9,20,0.8)] animate-text-glow-red">BARRIERS</span>
           </h2>
         </div>
 
         <div ref={line1Ref} className="w-24 sm:w-32 h-0.5 bg-ted-red mx-auto mb-4 max-md:mb-3 sm:mb-6"></div>
 
-        <p ref={subtitleRef} className="text-[clamp(1.25rem,3vw+0.5rem,1.875rem)] font-light mb-6 md:mb-10 text-white/90 px-2">
+        <p ref={subtitleRef} className="text-[clamp(1.25rem,3vw+0.5rem,1.875rem)] font-light mb-6 md:mb-10 text-white/90 px-2 animate-fade-in">
           Who Shapes the Future?
         </p>
 
